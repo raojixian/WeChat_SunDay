@@ -1,0 +1,9 @@
+<!--next.wxml-->
+<view class="container">
+  <view class="usermotto">
+    <text class="user-motto">{{num}}</text>
+    <text class="user-motto">{{motto}}</text>
+    <button bindtap="btnClick">{{motto}}</button>   
+  </view>
+ 
+</view>
