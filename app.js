@@ -7,7 +7,7 @@ App({
     wx.setStorageSync('logs', logs)
 
     //读取本地题库，赋值到全局变量
-    this.globalData.tiku = wx.getStorageSync('tiku') || {}
+    this.globalData.libs = wx.getStorageSync('libs') || []
   },
   getUserInfo:function(cb){
     var that = this
@@ -29,7 +29,6 @@ App({
   },
   globalData:{
     userInfo:null,
-    tiku:null,
-    test:'啊实打实'
+    libs:[],
   }
 })

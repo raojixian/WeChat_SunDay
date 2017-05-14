@@ -6,9 +6,12 @@
   </view>
   <view class="usermotto">
     <!--<text class="user-motto">{{num}}</text>-->
-    <button class="btn1" bindtap="btnClick">{{motto}}</button>
+    <navigator url="../main/main" hover-class="none">
+      <button class="btn1">开始学习</button>
+    </navigator>
+    
     <button class="btn2" bindtap="btn2Click">介绍</button>   
   </view>
 
-  
+
 </view>

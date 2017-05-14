@@ -17,7 +17,7 @@
 }
 
 .usermotto {
-  margin-top: 100px;
+  margin-top: 150px;
   width: 300px;
 }
 
@@ -26,5 +26,5 @@
 }
 
 .btn2 {
-  margin-top: 20px;
+  margin-top: 30px;
 }

@@ -1,0 +1,11 @@
+<!--pages/main/main.wxml-->
+<view class="container">
+<view class="classname" style="width: 100%">
+  <block wx:for="{{data}}" wx:for-item="key" style="width: 100%">
+      <button id = "{{key}}" bindtap="itemClick" style="width: 100%">{{key}}</button>
+  </block>
+  <text>{{txt}}</text>
+</view>
+
+
+</view>

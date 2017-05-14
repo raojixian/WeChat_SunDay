@@ -1,48 +1,17 @@
 //index.js
 //获取应用实例
 var app = getApp()
-var save = require('../../utils/save.js')
+var hander = require('../../utils/dataHander.js')
 Page({
   data: {
-    motto: '我是你妈妈',
     userInfo: {},
-    num: 0
   },
   //事件处理函数
   bindViewTap: function () {
+    hander.saveData()
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../logs/logs',    
     })
-  },
-
-  btnClick: function () {
-    /**if (this.data.motto == '我是你妈妈') {
-      this.setData({
-        motto: 'changed data'
-      })
-    } else {
-      this.setData({
-        motto: '我是你妈妈'
-      })
-    }
-**/
-
-    var text = "aaaa"
-    var re = /a*/
-    var result = re.exec(text)
-    if (result) {
-      this.setData({
-        num: this.data.num + 1
-      })
-    }
-
-    save.saveData()
-    this.setData({
-      motto: app.globalData.tiku
-    })
-
-    
-
   },
 
   onLoad: function () {
