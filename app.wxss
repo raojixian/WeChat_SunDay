@@ -8,3 +8,18 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.page {
+    min-height: 100%;
+    background-color: #FBF9FE;
+    font-size: 40rpx;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    overflow: hidden;
+}
+
+.page_hd{
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+}
+

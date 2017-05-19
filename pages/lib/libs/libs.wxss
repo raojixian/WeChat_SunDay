@@ -1,0 +1,32 @@
+/* pages/lib/libs/libs.wxss */
+.scroll-view-item{
+    height: 500rpx;
+}
+
+.page_title{
+    display: inline-block;
+    margin-top: 30rpx;
+    font-size: 40rpx;
+    color: #000000;
+    
+}
+
+.page_bottom{
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  
+  margin-top: 106rpx;
+  display:flex;
+  /*flex-direction:row;*/
+  background-color: #AAAAAA;
+}
+
+.flex-item{
+    width: 300rpx;
+    height: 100rpx;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -6,7 +6,7 @@
   </view>
   <view class="usermotto">
     <!--<text class="user-motto">{{num}}</text>-->
-    <navigator url="../main/main" hover-class="none">
+    <navigator url="../lib/libs/libs" hover-class="none">
       <button class="btn1">开始学习</button>
     </navigator>
     

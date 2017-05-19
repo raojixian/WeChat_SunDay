@@ -1,19 +1,24 @@
-// pages/main/main.js
-
+// pages/lib/libs/libs.js
 var app = getApp()
-var hander = require('../../utils/dataHander.js')
+var hander = require('../../../utils/dataHander.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    txt : "aaa",
-    data:[]
+    items:[],
+    test:"添加"
   },
   itemClick: function(e) {
-    this.setData({
-      txt: e.currentTarget.id
+    app.globalData.selectLib = e.currentTarget.id
+    wx.navigateTo({
+      url: '../../sub/subs/subs',
+    })
+  },
+  btnAddClick: function(){
+    wx.navigateTo({
+      url: '../addLib/addLib',
     })
   },
   /**
@@ -21,9 +26,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      data: hander.getSubsName('学科1')
+      items: hander.getLibsName()
     })
-    
   },
 
   /**

@@ -7,7 +7,7 @@ App({
     wx.setStorageSync('logs', logs)
 
     //读取本地题库，赋值到全局变量
-    this.globalData.libs = wx.getStorageSync('libs') || []
+    this.globalData.libs = JSON.parse(wx.getStorageSync('libs'))  || {}
   },
   getUserInfo:function(cb){
     var that = this
@@ -29,6 +29,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    libs:[],
+    libs:{},
+    selectLib : null,
   }
 })
