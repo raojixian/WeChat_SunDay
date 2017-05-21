@@ -8,14 +8,15 @@
 <radio value="b" checked="false" /><text>多选 </text>
 <radio value="c" checked="false" /><text>判断</text>
 </radio-group>
+<input id="myInput"  bindchange="getName" />
 </view>
 <scroll-view  scroll-y="true" style="height: 760rpx;">
 <textarea  auto-height maxlength="20000" placeholder="请将题库复制到此处" value = "{{txt}}" bindblur="txtChange" placeholder-style="color:red;"/>
 </scroll-view>
 <view class="page_bottom">
-<button class="flex-item" bindtap="btnAddClick" >清空</button>
-<button class="flex-item">格式化</button>
+<button class="flex-item" bindtap="clear" >清空</button>
+<button class="flex-item" bindtap="btnFormat">{{form}}</button>
 </view>
-<text>{{txt}}</text>
+<text>{{name}}</text>
 </view>
 

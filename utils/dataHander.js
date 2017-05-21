@@ -4,16 +4,16 @@ var libs = app.globalData.libs
 var jsondata = {
   "学科1": {
     "题库1": {
-      type: "0",
-      data: [
+      "type": 0,
+      "data": [
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D']]
     },
     "题库2": {
-      type: "0",
-      data: [
+      "type": 0,
+      "data": [
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D'],
@@ -22,16 +22,16 @@ var jsondata = {
   },
   "学科2": {
     "题库1": {
-      type: "0",
-      data: [
+      "type": 0,
+      "data": [
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D']]
     },
     "题库2": {
-      type: "0",
-      data: [
+      "type": 0,
+      "data": [
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D'],
         ['A', 'T', 'A', 'B', 'C', 'D'],
@@ -86,9 +86,9 @@ function isNull(str) {
 }
 
 //增加一个新的Lib，如果成功返回true,已存在返回false
-function addLib(libname) {
-  if (libs[libname] == null) {
-    libs[libname] = {}
+function addLib(libName) {
+  if (libs[libName] == null) {
+    libs[libName] = {}
     return true
   }
   else {
@@ -101,6 +101,20 @@ function removeLib(libname) {
   
 }
 
+function addSub(subName){
+  var lib = libs[app.globalData.selectLib];
+
+  if (lib[subName] == null){
+    lib[subName] = app.globalData.form;
+    libs[app.globalData.selectLib] = lib;
+    saveData();
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 
 
 module.exports = {
@@ -108,5 +122,6 @@ module.exports = {
   getLibsName,
   getSubsName,
   addLib,
+  addSub,
   isNull
 }

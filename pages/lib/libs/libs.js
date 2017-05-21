@@ -12,6 +12,10 @@ Page({
   },
   itemClick: function(e) {
     app.globalData.selectLib = e.currentTarget.id
+    this.setData({
+      test: app.globalData.selectLib
+    })
+    
     wx.navigateTo({
       url: '../../sub/subs/subs',
     })

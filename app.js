@@ -31,5 +31,6 @@ App({
     userInfo:null,
     libs:{},
     selectLib : null,
+    form:{}
   }
 })

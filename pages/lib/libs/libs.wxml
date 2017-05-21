@@ -12,6 +12,6 @@
 </view>
 <view class="page_bottom">
 <button class="flex-item" bindtap="btnAddClick">编辑</button>
-<button class="flex-item">下载</button>
+<button class="flex-item">{{test}}</button>
 </view>
 </view>
