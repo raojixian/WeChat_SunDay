@@ -1,0 +1,10 @@
+<!--pages/main/single/single.wxml-->
+<view class="page">
+<label>{{title}}</label>
+<button id='A' bindtap="btnOpClick" style="background-color: {{bcA}}" plain="true">{{opA}}</button>
+<button id='B' bindtap="btnOpClick" style="background-color: {{bcB}}" plain="true">{{opB}}</button>
+<button id='C' bindtap="btnOpClick" style="background-color: {{bcC}}" plain="true">{{opC}}</button>
+<button id='D' bindtap="btnOpClick" style="background-color: {{bcD}}" plain="true">{{opD}}</button>
+<button bindtap="nextQuestion">下一题</button>
+<button bindtap="lastQuestion">上一题</button>
+</view>

@@ -1,6 +1,6 @@
 /* pages/lib/libs/libs.wxss */
 .scroll-view-item{
-    height: 500rpx;
+    height: 200rpx;
 }
 
 .page_title{

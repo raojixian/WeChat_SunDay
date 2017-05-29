@@ -5,7 +5,9 @@
     "pages/lib/libs/libs",
     "pages/lib/addLib/addLib",
     "pages/sub/subs/subs",    
-    "pages/sub/addSub/addSub"
+    "pages/sub/addSub/addSub",
+    "pages/main/guide/guide",
+    "pages/main/single/single"
   ],
   "window":{
     "backgroundTextStyle":"light",

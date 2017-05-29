@@ -1,4 +1,4 @@
-// pages/sub/subs/subs.js
+// pages/main/guide/guide.js
 var app = getApp()
 var hander = require('../../../utils/dataHander.js')
 Page({
@@ -7,28 +7,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: []
+    typ : 0,
+    items : [],
+    test : 'aaa'
   },
-  itemClick: function (e) {
-    app.globalData.selectSub = e.currentTarget.id
+  btnClick : function(){
+
+    app.globalData.items = this.data.items
+
     wx.navigateTo({
-      url: '../../main/guide/guide',
+      url: '../single/single',
     })
-  },
-  btnAddClick: function () {
-    wx.navigateTo({
-      url: '../addSub/addSub',
-    })
-  },
+  }
+  ,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      items: hander.getSubsName(app.globalData.selectLib)
-    })
-  },
+    var sub = hander.getSubData(app.globalData.selectLib, app.globalData.selectSub);
 
+    this.setData({
+      typ: sub['type'],
+      items: sub['data'],
+      test: sub['data']
+      })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -75,20 +78,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
   
   }
 })

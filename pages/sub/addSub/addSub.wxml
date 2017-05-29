@@ -14,6 +14,7 @@
 <textarea  auto-height maxlength="20000" placeholder="请将题库复制到此处" value = "{{txt}}" bindblur="txtChange" placeholder-style="color:red;"/>
 </scroll-view>
 <view class="page_bottom">
+<modal title="添加题库" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="modalFirm" bindcancel="modalCancel">{{name}}</modal>
 <button class="flex-item" bindtap="clear" >清空</button>
 <button class="flex-item" bindtap="btnFormat">{{form}}</button>
 </view>

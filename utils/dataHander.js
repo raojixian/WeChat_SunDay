@@ -67,14 +67,21 @@ function getLibsName() {
 }
 
 
-//得到指定Lib下的题库
-function getSubsName(libname) {
-  var lib = libs[libname]
-  var libName = []
+//得到指定Lib下的题库名
+function getSubsName(libName) {
+  var lib = libs[libName]
+  var subName = []
   for (var key in lib){
-    libName.push(key)
+    subName.push(key)
   }
-  return libName
+  return subName
+}
+
+//得到指定Lib下的指定题库
+function getSubData(libName,subName) {
+  var lib = libs[libName]
+  var sub = lib[subName]
+  return sub
 }
 
 //判断字符串是否为空或全为空格
@@ -123,5 +130,6 @@ module.exports = {
   getSubsName,
   addLib,
   addSub,
+  getSubData,
   isNull
 }

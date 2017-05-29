@@ -1,7 +1,7 @@
 /* pages/sub/subs/subs.wxss */
 
 .scroll-view-item{
-    height: 500rpx;
+    height: 200rpx;
 }
 
 .page_title{

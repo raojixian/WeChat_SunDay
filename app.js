@@ -30,7 +30,9 @@ App({
   globalData:{
     userInfo:null,
     libs:{},
-    selectLib : null,
-    form:{}
+    selectLib : null,//当前选择的科目
+    selectSub: null,//当前选择的题库
+    form:{},//格式化后的数据
+    items:[],
   }
 })

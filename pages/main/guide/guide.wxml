@@ -1,0 +1,11 @@
+<!--pages/main/guide/guide.wxml-->
+
+<view class="page">
+<radio-group class="radio-group">
+<radio value="a" checked="true" /><text>练习 </text>
+<radio value="b" checked="false" /><text>测试 </text>
+</radio-group>
+<switch type="switch" />乱序
+<button bindtap="btnClick">开始</button>
+<label>{{test}}</label>
+</view>
