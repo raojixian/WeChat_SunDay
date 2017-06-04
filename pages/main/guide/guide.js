@@ -9,17 +9,32 @@ Page({
   data: {
     typ : 0,
     items : [],
+    rbtnChecked : 'a',
     test : 'aaa'
   },
   btnClick : function(){
 
-    app.globalData.items = this.data.items
+    app.globalData.items = this.data.items;
 
-    wx.navigateTo({
-      url: '../single/single',
+    if(this.data.rbtnChecked == 'a'){
+      wx.redirectTo({
+        url: '../single/single',
+      })
+    }
+    else if(this.data.rbtnChecked == 'b'){
+      wx.redirectTo({
+        url: '../single1/single1',
+      })
+    }
+
+  },
+  radioChange: function (e) {
+    this.setData({
+      rbtnChecked: e.detail.value,
     })
   }
   ,
+
   /**
    * 生命周期函数--监听页面加载
    */

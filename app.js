@@ -7,7 +7,13 @@ App({
     wx.setStorageSync('logs', logs)
 
     //读取本地题库，赋值到全局变量
-    this.globalData.libs = JSON.parse(wx.getStorageSync('libs'))  || {}
+
+    try{
+      this.globalData.libs = JSON.parse(wx.getStorageSync('libs'));
+    } catch (e) {
+      //第一次启动，没有缓存
+    }
+      
   },
   getUserInfo:function(cb){
     var that = this
@@ -33,6 +39,7 @@ App({
     selectLib : null,//当前选择的科目
     selectSub: null,//当前选择的题库
     form:{},//格式化后的数据
-    items:[],
+    items:[],//当前做的题
+    answer:[],//用户的答案
   }
 })

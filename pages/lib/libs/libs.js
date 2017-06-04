@@ -8,30 +8,68 @@ Page({
    */
   data: {
     items:[],
-    test:"添加"
-  },
-  itemClick: function(e) {
-    app.globalData.selectLib = e.currentTarget.id
-    this.setData({
-      test: app.globalData.selectLib
-    })
-    
-    wx.navigateTo({
-      url: '../../sub/subs/subs',
-    })
+    touch_start : 0,
+    modalHidden: true,
+    selectLib:'',
   },
   btnAddClick: function(){
     wx.navigateTo({
       url: '../addLib/addLib',
     })
   },
+  //按下事件开始  
+  touchstart: function (e) {
+    let that = this;
+    that.setData({
+      touch_start: e.timeStamp
+    })
+  },
+  //按下事件结束  
+  touchend: function (e) {
+    let that = this;
+    if (e.timeStamp - that.data.touch_start<350){
+      app.globalData.selectLib = e.currentTarget.id
+      this.setData({
+        test: app.globalData.selectLib
+      })
+      wx.navigateTo({
+        url: '../../sub/subs/subs',
+      })
+    }
+  },
+  //长按
+  longtap:function(e){
+    //切换到modal对话框
+    this.setData({
+      selectLib : e.currentTarget.id,
+      modalHidden : false
+    })
+  },
+  //确认
+  modalFirm: function (e) {
+    this.setData({
+      modalHidden: true
+    })
+    if (hander.removeLib(this.data.selectLib)){
+      wx.showToast({
+        title: '删除成功',
+      })
+      this.setData({
+        items: hander.getLibsName()
+      })
+    }
+  },
+  //取消
+  modalCancel: function (e) {
+    this.setData({
+      modalHidden: true
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      items: hander.getLibsName()
-    })
+
   },
 
   /**
@@ -45,14 +83,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      items: hander.getLibsName()
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**

@@ -8,30 +8,30 @@ Page({
    */
   data: {
     items:[],
+    tishu: 0,
     index : 0,
     daan:'',
     title:'题目',
-    opA:'选项1',
-    opB:'选项2',
-    opC:'选项3',
-    opD:'选项4',
+    opA:'选项A',
+    opB:'选项B',
+    opC:'选项C',
+    opD:'选项D',
+    test:'A.啊实打实大师大师法定三个地方胜多负少的发生的士大夫第三方',
 
-    bc_default :'',
-    bc_right:'#09BB07',
-    bc_wrong:'#DE0507',
+    bc_default :'#FCFCFC',
+    bc_right:'#98FB98',
+    bc_wrong:'#FF99B4',
     bcA: '',
     bcB: '',
     bcC: '',
-    bcD: ''
+    bcD: '',
+
+    array : [],
+
+
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options){
-    this.data.items  = app.globalData.items
-    
-  },
+
 
   setQuestion:function(){
     var i = this.data.index
@@ -51,17 +51,19 @@ Page({
   btnOpClick:function(e){
     var select = e.currentTarget.id;
     if(select == this.data.daan){
-      if (select == 'A') {
-        this.setData({ bcA: this.data.bc_right });
-      }
-      else if (select == 'B'){
-        this.setData({ bcB: this.data.bc_right });
-      }
-      else if (select == 'C'){
-        this.setData({ bcC: this.data.bc_right });
-      }
-      else if (select == 'D'){
-        this.setData({ bcD: this.data.bc_right });
+      if (this.data.index == this.data.tishu -1){
+        if (select == 'A') {
+          this.setData({ bcA: this.data.bc_right });
+        }
+        else if (select == 'B') {
+          this.setData({ bcB: this.data.bc_right });
+        }
+        else if (select == 'C') {
+          this.setData({ bcC: this.data.bc_right });
+        }
+        else if (select == 'D') {
+          this.setData({ bcD: this.data.bc_right });
+        }
       }
       this.nextQuestion();
     }
@@ -81,16 +83,74 @@ Page({
     }
   },
   nextQuestion:function(){    
-    if (this.data.index < this.data.items.length -1 ){
-      this.data.index = this.data.index + 1;
+    if (this.data.index < this.data.tishu-1){
+      this.setData({ index: this.data.index + 1});
       this.setQuestion();
     }
   },
   lastQuestion: function () {
     if (this.data.index > 0) {
-      this.data.index = this.data.index - 1;
+      this.setData({ index: this.data.index - 1});
       this.setQuestion();
     }
+  },
+  showRight:function(){
+
+    if (this.data.daan == 'A') {
+      this.setData({ 
+        bcA: this.data.bc_right,
+        bcB: this.data.bc_wrong,
+        bcC: this.data.bc_wrong,
+        bcD: this.data.bc_wrong,
+        });
+    }
+    else if (this.data.daan == 'B') {
+      this.setData({
+        bcB: this.data.bc_right,
+        bcA: this.data.bc_wrong,
+        bcC: this.data.bc_wrong,
+        bcD: this.data.bc_wrong, 
+        });
+    }
+    else if (this.data.daan == 'C') {
+      this.setData({
+        bcC: this.data.bc_right,
+        bcA: this.data.bc_wrong,
+        bcB: this.data.bc_wrong,
+        bcD: this.data.bc_wrong, 
+        });
+    }
+    else if (this.data.daan == 'D') {
+
+      
+      this.setData({
+        bcD: this.data.bc_right,
+        bcA: this.data.bc_wrong,
+        bcB: this.data.bc_wrong,
+        bcC: this.data.bc_wrong,
+        });
+    }
+  },
+  bindPickerChange: function (e) {
+    this.setData({
+      index: parseInt(e.detail.value)
+    })
+    this.setQuestion();
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options){
+    var len = app.globalData.items.length;
+    var arr = new Array(len);
+    for (var i = 0; i < len; i++) {
+      arr[i] = app.globalData.items[i][1];
+    }
+    this.setData({
+      items: app.globalData.items,
+      tishu: len,
+      array : arr,
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

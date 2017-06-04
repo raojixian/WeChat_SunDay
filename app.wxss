@@ -11,7 +11,7 @@
 
 .page {
     min-height: 100%;
-    background-color: #FBF9FE;
+    background-color: #FFFFFF;
     font-size: 40rpx;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
     overflow: hidden;

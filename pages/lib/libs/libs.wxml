@@ -1,17 +1,10 @@
 <!--pages/lib/libs/libs.wxml-->
 <view class="page">
 <view class="page_hd">
-  <label class="page_title">本地题库</label>
+  <button class="flex-item" bindtap="btnAddClick">添加科目</button>
 </view>
 <view class="section" style="width: 100%">
-  <scroll-view  scroll-y="true" style="height: 900rpx;">
-    <view class="scroll-view-item" wx:for="{{items}}" wx:for-item="key">
-      <button id = "{{key}}" bindtap="itemClick" style="height: 100%">{{key}}</button>
-    </view>
-  </scroll-view> 
-</view>
-<view class="page_bottom">
-<button class="flex-item" bindtap="btnAddClick">编辑</button>
-<button class="flex-item">{{test}}</button>
+<modal title="删除科目" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="modalFirm" bindcancel="modalCancel">{{selectLib}}</modal>
+<button  class="scroll-item" wx:for="{{items}}" wx:for-item="key" id = "{{key}}" plain="true" bindtouchstart="touchstart" bindtouchend="touchend" bindlongtap="longtap">{{key}}</button>
 </view>
 </view>

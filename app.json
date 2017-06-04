@@ -7,7 +7,9 @@
     "pages/sub/subs/subs",    
     "pages/sub/addSub/addSub",
     "pages/main/guide/guide",
-    "pages/main/single/single"
+    "pages/main/single/single",
+    "pages/main/single1/single1",
+    "pages/main/result/result"
   ],
   "window":{
     "backgroundTextStyle":"light",

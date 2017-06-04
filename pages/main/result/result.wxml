@@ -1,0 +1,6 @@
+<!--pages/main/result/result.wxml-->
+<view class="page">
+<text>总题数：{{total}},完成：{{done}},做对：{{right}}</text>
+<button bindtap="practice">练习错题</button>
+<text>{{wrongText}}</text>
+</view>

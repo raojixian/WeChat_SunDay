@@ -4,7 +4,7 @@
 <view class="add">
 <input  id="myInput" bindchange="bindChange"/>
 <button  bindtap="modalTap">添加</button>
-    <modal title="添加科目" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="modalFirm" bindcancel="modalCancel">{{inputText}}</modal>
+    <modal title="添加科目" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="modalFirm" bindcancel="modalCancel" bindlongtap="longtap">{{inputText}}</modal>
 </view>
 
 </view>

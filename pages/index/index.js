@@ -13,7 +13,11 @@ Page({
       url: '../logs/logs',    
     })
   },
-
+  btnStart:function(){
+    wx.redirectTo({
+      url: '../lib/libs/libs',
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this

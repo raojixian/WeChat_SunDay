@@ -1,4 +1,6 @@
-<!--pages/main/single/single.wxml-->
+<!--pages/main/single1/single1.wxml-->
+
+
 <view class="page">
 <scroll-view scroll-y style="height: 320rpx;">
 <label class="lbl_title">{{title}}</label>
@@ -10,7 +12,7 @@
 <button id='D' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcD}};" >{{opD}}</button>
 </scroll-view>
 <view class="page_bottom">
-<button class="btn_right" bindtap="showRight"   plain="true">㊣</button>
+<button class="btn_right" bindtap="submit"   plain="true">提交</button>
 <picker value="{{time}}" value="{{index}}" range="{{array}}" bindchange="bindPickerChange">
   <view class="msg">{{index+1}}/{{tishu}}</view>
 </picker>
