@@ -10,13 +10,12 @@ Page({
     items:[],
     tishu: 0,
     index : 0,
-    daan:'',
+    item: [],
     title:'题目',
     opA:'选项A',
     opB:'选项B',
     opC:'选项C',
     opD:'选项D',
-    test:'A.啊实打实大师大师法定三个地方胜多负少的发生的士大夫第三方',
 
     bc_default :'#FCFCFC',
     bc_right:'#98FB98',
@@ -36,12 +35,7 @@ Page({
   setQuestion:function(){
     var i = this.data.index
     this.setData({
-      daan: this.data.items[i][0],
-      title: this.data.items[i][1],
-      opA: this.data.items[i][2],
-      opB: this.data.items[i][3],
-      opC: this.data.items[i][4],
-      opD: this.data.items[i][5],
+      item: this.data.items[i],
       bcA: this.data.bc_default,
       bcB: this.data.bc_default,
       bcC: this.data.bc_default,
@@ -50,7 +44,7 @@ Page({
   },
   btnOpClick:function(e){
     var select = e.currentTarget.id;
-    if(select == this.data.daan){
+    if(select == this.data.item[0]){
       if (this.data.index == this.data.tishu -1){
         if (select == 'A') {
           this.setData({ bcA: this.data.bc_right });
@@ -96,38 +90,24 @@ Page({
   },
   showRight:function(){
 
-    if (this.data.daan == 'A') {
+    if (this.data.item[0] == 'A') {
       this.setData({ 
         bcA: this.data.bc_right,
-        bcB: this.data.bc_wrong,
-        bcC: this.data.bc_wrong,
-        bcD: this.data.bc_wrong,
         });
     }
-    else if (this.data.daan == 'B') {
+    else if (this.data.item[0] == 'B') {
       this.setData({
         bcB: this.data.bc_right,
-        bcA: this.data.bc_wrong,
-        bcC: this.data.bc_wrong,
-        bcD: this.data.bc_wrong, 
         });
     }
-    else if (this.data.daan == 'C') {
+    else if (this.data.item[0] == 'C') {
       this.setData({
         bcC: this.data.bc_right,
-        bcA: this.data.bc_wrong,
-        bcB: this.data.bc_wrong,
-        bcD: this.data.bc_wrong, 
         });
     }
-    else if (this.data.daan == 'D') {
-
-      
+    else if (this.data.item[0] == 'D') {
       this.setData({
         bcD: this.data.bc_right,
-        bcA: this.data.bc_wrong,
-        bcB: this.data.bc_wrong,
-        bcC: this.data.bc_wrong,
         });
     }
   },

@@ -1,13 +1,13 @@
 <!--pages/main/single/single.wxml-->
 <view class="page">
 <scroll-view scroll-y style="height: 320rpx;">
-<label class="lbl_title">{{title}}</label>
+<label class="lbl_title">{{item[1]}}</label>
 </scroll-view>
  <scroll-view scroll-y style="height: 720rpx; margin-top: 20rpx;">
-<button id='A' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcA}} ;margin-top: 0rpx;">{{opA}}</button>
-<button id='B' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcB}};" >{{opB}}</button>
-<button id='C' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcC}};" >{{opC}}</button>
-<button id='D' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcD}};" >{{opD}}</button>
+<button id='A' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcA}} ;margin-top: 0rpx;">{{item[2]}}</button>
+<button id='B' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcB}};" >{{item[3]}}</button>
+<button id='C' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcC}};" >{{item[4]}}</button>
+<button id='D' class="btn_op" wx:if="{{item.length>5}}" bindtap="btnOpClick" style="background-color: {{bcD}};" >{{item[5]}}</button>
 </scroll-view>
 <view class="page_bottom">
 <button class="btn_right" bindtap="showRight"   plain="true">㊣</button>

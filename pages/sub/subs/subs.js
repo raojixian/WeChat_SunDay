@@ -11,6 +11,8 @@ Page({
     touch_start: 0,
     modalHidden: true,
     selectSub: '',
+    rbtnChecked: 'a',
+    actionSheetHidden: true,
   },
   btnAddClick: function () {
     wx.navigateTo({
@@ -27,18 +29,66 @@ Page({
   //按下事件结束  
   touchend: function (e) {
     let that = this;
-    if (e.timeStamp - that.data.touch_start < 350) {
-      app.globalData.selectSub = e.currentTarget.id
-      wx.navigateTo({
-        url: '../../main/guide/guide',
-      })
+    if (e.timeStamp - that.data.touch_start < 350){
+      app.globalData.selectSub = e.currentTarget.id;
+
+      var sub = hander.getSubData(app.globalData.selectLib, app.globalData.selectSub);
+      var items = sub['data'];
+      var tp = sub['type'];
+
+      //设置items乱序
+      app.globalData.items = items;
+
+      if (this.data.rbtnChecked == 'a'){
+        if (tp == 0){
+          wx.navigateTo({
+            url: '../../main/single/single',
+          })
+        }
+        else if(tp == 1){
+          wx.navigateTo({
+            url: '../../main/multiple/multiple',
+          })
+        }
+      }
+      else if (this.data.rbtnChecked == 'b') {
+        
+        if (tp == 0) {
+          wx.navigateTo({
+            url: '../../main/single1/single1',
+          })
+        }
+        else if (tp == 1) {
+          wx.navigateTo({
+            url: '../../main/multiple1/multiple1',
+          })
+        }
+      }
+
     }
+  },
+  radioChange: function (e) {
+    this.setData({
+      rbtnChecked: e.detail.value,
+    })
   },
   //长按
   longtap: function (e) {
-    //切换到modal对话框
+    //切换到actionSheet对话框
     this.setData({
       selectSub: e.currentTarget.id,
+      actionSheetHidden: !this.data.actionSheetHidden
+    })
+  },
+  actionSheetChange: function (e) {
+    this.setData({
+      actionSheetHidden: !this.data.actionSheetHidden
+    })
+  },
+  //切换到modal对话框
+  tapModal:function () {
+    this.setData({
+      actionSheetHidden: !this.data.actionSheetHidden,
       modalHidden: false
     })
   },

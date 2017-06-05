@@ -11,6 +11,7 @@ Page({
     touch_start : 0,
     modalHidden: true,
     selectLib:'',
+    actionSheetHidden: true,
   },
   btnAddClick: function(){
     wx.navigateTo({
@@ -39,9 +40,24 @@ Page({
   },
   //长按
   longtap:function(e){
-    //切换到modal对话框
+    
     this.setData({
-      selectLib : e.currentTarget.id,
+      selectLib: e.currentTarget.id,
+      actionSheetHidden: !this.data.actionSheetHidden
+    })
+
+
+  },
+  actionSheetChange: function (e) {
+    this.setData({
+      
+      actionSheetHidden: !this.data.actionSheetHidden
+    })
+  },
+  //切换到modal对话框
+  tapModal:function(){
+    this.setData({
+      actionSheetHidden: !this.data.actionSheetHidden,
       modalHidden : false
     })
   },

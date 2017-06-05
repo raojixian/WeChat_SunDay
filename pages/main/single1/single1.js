@@ -10,12 +10,8 @@ Page({
     items: [],
     tishu: 0,
     index: 0,
-    answer : [],
-    title: '题目',
-    opA: '选项1',
-    opB: '选项2',
-    opC: '选项3',
-    opD: '选项4',
+    answers : [],
+    item: [],
     bc_default: '',
     bc_select: '#0999C7',
     bcA: '',
@@ -29,41 +25,53 @@ Page({
   setQuestion: function () {
     var i = this.data.index
     this.setData({
-      title: this.data.items[i][1],
-      opA: this.data.items[i][2],
-      opB: this.data.items[i][3],
-      opC: this.data.items[i][4],
-      opD: this.data.items[i][5],
-      bcA: this.data.bc_default,
-      bcB: this.data.bc_default,
-      bcC: this.data.bc_default,
-      bcD: this.data.bc_default,
+      item: this.data.items[i],
     })
-    var ans = this.data.answer[this.data.index];
-    if (ans == 'A') {
+    var ans = this.data.answers[this.data.index];
+    if (ans == ''){
+      this.setData({
+        bcA: this.data.bc_default,
+        bcB: this.data.bc_default,
+        bcC: this.data.bc_default,
+        bcD: this.data.bc_default,
+      });
+    }
+    else if (ans == 'A') {
       this.setData({
         bcA: this.data.bc_select,
+        bcB: this.data.bc_default,
+        bcC: this.data.bc_default,
+        bcD: this.data.bc_default,
       });
     }
     else if (ans == 'B') {
       this.setData({
         bcB: this.data.bc_select,
+        bcA: this.data.bc_default,
+        bcC: this.data.bc_default,
+        bcD: this.data.bc_default,
       });
     }
     else if (ans == 'C') {
       this.setData({
         bcC: this.data.bc_select,
+        bcA: this.data.bc_default,
+        bcB: this.data.bc_default,
+        bcD: this.data.bc_default,
       });
     }
     else if (ans == 'D') {
       this.setData({
         bcD: this.data.bc_select,
+        bcA: this.data.bc_default,
+        bcB: this.data.bc_default,
+        bcC: this.data.bc_default,
       });
     }
   },
   btnOpClick: function (e) {
     var select = e.currentTarget.id;
-    this.data.answer[this.data.index] = select
+    this.data.answers[this.data.index] = select
     if (select == 'A') {
       this.setData({
         bcA: this.data.bc_select,
@@ -99,18 +107,18 @@ Page({
   },
   nextQuestion: function () {
     if (this.data.index < this.data.items.length - 1) {
-      this.data.index = this.data.index + 1;
+      this.setData({ index: this.data.index + 1});
       this.setQuestion();
     }
   },
   lastQuestion: function () {
     if (this.data.index > 0) {
-      this.data.index = this.data.index - 1;
+      this.setData({ index: this.data.index - 1});
       this.setQuestion();
     }
   },
   submit: function () {
-    app.globalData.answer = this.data.answer;
+    app.globalData.answers = this.data.answers;
     wx.redirectTo({
       url:  '../result/result'
     })
@@ -126,8 +134,8 @@ Page({
    */
   onLoad: function (options) {
     var len = app.globalData.items.length;
-    var answer = new Array(len);
-    answer.fill(0);
+    var answers = new Array(len);
+    answers.fill('');
     var arr = new Array(len);
     for (var i = 0; i < len; i++) {
       arr[i] = app.globalData.items[i][1];
@@ -135,7 +143,7 @@ Page({
     this.setData({
       items: app.globalData.items,
       tishu: len,
-      answer : answer,
+      answers : answers,
       array: arr,
     });
 

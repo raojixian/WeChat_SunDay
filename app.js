@@ -40,6 +40,6 @@ App({
     selectSub: null,//当前选择的题库
     form:{},//格式化后的数据
     items:[],//当前做的题
-    answer:[],//用户的答案
+    answers:[],//用户的答案
   }
 })

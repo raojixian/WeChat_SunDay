@@ -1,14 +1,15 @@
 <!--pages/sub/addSub/addSub.wxml-->
 <view class="page">
-<button>删除该科目</button>
-<button>手动添加</button>
-<view class="select">
-<radio-group class="radio-group">
-<radio value="a" checked="true" /><text>单选 </text>
-<radio value="b" checked="false" /><text>多选 </text>
-<radio value="c" checked="false" /><text>判断</text>
-</radio-group>
+请输入名称
 <input id="myInput"  bindchange="getName" />
+
+<view class="select">
+<radio-group class="radio-group" bindchange="radioChange">
+<radio value="a" checked="true" /><text>单选 </text>
+<radio value="b"/><text>多选 </text>
+<radio value="c"/><text>判断</text>
+</radio-group>
+
 </view>
 <scroll-view  scroll-y="true" style="height: 760rpx;">
 <textarea  auto-height maxlength="20000" placeholder="请将题库复制到此处" value = "{{txt}}" bindblur="txtChange" placeholder-style="color:red;"/>

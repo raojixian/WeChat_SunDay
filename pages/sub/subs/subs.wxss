@@ -1,12 +1,23 @@
 /* pages/sub/subs/subs.wxss */
 
 .page_hd{
-
+  margin-top: 20rpx ;  
   width: 100%;
-  height: 100rpx;
+  height: 65rpx;
   display:flex;
   /*flex-direction:row;*/
 }
+
+.radio_group{
+  position: relative;
+  top:6rpx;
+}
+
+.hd_switch{
+  position: absolute;
+  right: 0rpx ;  
+}
+
 
 .scroll-item{
     margin-top: 20rpx ;  
