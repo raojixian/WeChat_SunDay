@@ -1,13 +1,28 @@
 /* pages/sub/addSub/addSub.wxss */
 
+.input_name{
+  display:flex;
+  margin-top:0rpx;
+  height:80rpx ;
+}
+.btn_name{
+  height:80rpx;
+  margin-left:0rpx;
+}
 
-.page_bottom{
+.show_text{
+  margin-top:10rpx;
+  height: 23.0em;
+  width:18.5em;
+}
+
+.pageAdd_bottom{
+  position: absolute;
   width: 100%;
   height: 100rpx;
-  text-align: center;
+  bottom: 20rpx;
   display:flex;
   /*flex-direction:row;*/
-  background-color: #AAAAAA;
 }
 
 .flex-item{

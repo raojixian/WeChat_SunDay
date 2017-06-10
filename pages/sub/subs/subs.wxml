@@ -3,16 +3,19 @@
 <button  bindtap="btnAddClick">添加题库</button>
 <view class="page_hd">
   <radio-group class="radio_group" bindchange="radioChange">
-  <radio value="a" checked="true" /><text>练习 </text>
-  <radio value="b"  /><text>测试 </text>
+    <radio value="a" checked="true" /><text>练习 </text>
+    <radio value="b"  /><text>测试 </text>
   </radio-group>
   <view class="hd_switch">
-  乱序<switch type="switch"/>
+  乱序<switch type="switch" checked= "{{order}}" bindchange="switchChange" />
   </view>
 </view>
-<view class="section" style="width: 100%">
-<button  class="scroll-item" wx:for="{{items}}" wx:for-item="key" id = "{{key}}" plain="true" bindtouchstart="touchstart" bindtouchend="touchend" bindlongtap="longtap">{{key}}</button>
-</view>
+<scroll-view scroll-y class="section">
+  <view class="page_scroll_item" wx:for="{{items}}" wx:for-item="key" id = "{{key}}">
+    <view class="scroll_item_left" id = "{{key}}" bindlongtap="longtap">{{key}}</view>
+    <view class="scroll_item_right" id = "{{key}}" bindtap="itemtap" >☚</view>
+  </view>
+</scroll-view>
   <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
         <action-sheet-item class="item" bindtap="tapModal">删除</action-sheet-item>
         <action-sheet-cancel class="cancel">取消</action-sheet-cancel>

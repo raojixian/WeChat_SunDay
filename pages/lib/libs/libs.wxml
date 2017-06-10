@@ -1,11 +1,12 @@
 <!--pages/lib/libs/libs.wxml-->
 <view class="page">
-<view class="page_hd">
-  <button class="flex-item" bindtap="btnAddClick">添加科目</button>
-</view>
-<view class="section" style="width: 100%">
-<button  class="scroll-item" wx:for="{{items}}" wx:for-item="key" id = "{{key}}" plain="true" bindtouchstart="touchstart" bindtouchend="touchend" bindlongtap="longtap">{{key}}</button>
-</view>
+  <button bindtap="btnAddClick">添加科目</button>
+  <scroll-view scroll-y class="section">
+    <view class="page_scroll_item" wx:for="{{items}}" wx:for-item="key" id = "{{key}}">
+      <view class="scroll_item_left" id = "{{key}}" bindlongtap="longtap">{{key}}</view>
+      <view class="scroll_item_right" id = "{{key}}" bindtap="itemtap" >☚</view>
+    </view>
+  </scroll-view>
   <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
       <action-sheet-item class="item" bindtap="tapModal">删除</action-sheet-item>
       <action-sheet-cancel class="cancel">取消</action-sheet-cancel>

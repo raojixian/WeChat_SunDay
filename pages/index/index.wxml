@@ -1,15 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class="logoinfo">
+    <image class="logo-avatar" src="/image/logo.png" background-size="cover"></image>
+    <text class="logo-nickname">我爱刷题</text>
   </view>
   <view class="usermotto">
-    <!--<text class="user-motto">{{num}}</text>-->
-    <button class="btn1" bindtap="btnStart">开始学习</button>
-    
-    <button class="btn2" bindtap="btn2Click">介绍</button>   
+    <button  bindtap="btnStart">开始学习</button>
+    <button style="margin-top: 30px;" bindtap="btnIntroduce">使用说明</button>   
   </view>
-
-
 </view>

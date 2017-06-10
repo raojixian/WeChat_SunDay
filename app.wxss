@@ -11,15 +11,90 @@
 
 .page {
     min-height: 100%;
-    background-color: #FFFFFF;
     font-size: 40rpx;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
     overflow: hidden;
 }
 
-.page_hd{
-  width: 100%;
-  height: 100rpx;
-  text-align: center;
+.page_scroll_item{
+    margin-bottom: 20rpx;  
+    height: 120rpx;
+    display:flex;
+    background-color: #FBFBFB;
+    border: 2rpx solid;
+    border-color:#FBFBFB;
+    border-top-color:#DDDDDD;
+    border-bottom-color:#DDDDDD;
 }
 
+.scroll_item_left{
+  width:630rpx;
+  text-align:center;
+  line-height: 120rpx;
+}
+
+.scroll_item_right{
+  width:120rpx;
+  height: 120rpx;
+  text-align:center;
+  font-size: 40rpx;
+  line-height: 120rpx;
+  border: 2rpx solid;
+  border-color:#FBFBFB;
+  border-left-color:#DDDDDD;
+}
+
+.page_title{
+   text-align: left;
+   margin-top: 10rpx;
+   line-height: 50rpx;
+   font-size: 40rpx;
+}
+
+
+/**选择题选项**/
+.btn_op{
+   min-height: 100rpx;
+   text-align: left;
+   margin-bottom: 16rpx;
+   line-height: 50rpx;
+   font-size: 40rpx;
+}
+
+.page_bottom{
+  position: absolute;
+  width: 100%;
+  height: 100rpx;
+  bottom: 20rpx;
+  display:flex;
+}
+
+.page_bottom_left{
+    position: absolute;
+    left: 8rpx;
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.page_bottom_msg{
+  position: absolute;
+  left: 120rpx;
+  bottom: 0rpx;
+  width: 260rpx;
+  height: 50rpx;
+  font-size: 40rpx;
+}
+
+.page_bottom_last{
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    right: 150rpx;
+}
+
+.page_bottom_next{
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    right: 8rpx;
+}

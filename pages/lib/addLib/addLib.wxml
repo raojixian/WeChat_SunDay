@@ -1,10 +1,14 @@
 <!--pages/lib/addLib/addLib.wxml-->
 <view class="page">
-<button>手动添加</button>
-<view class="add">
-<input  id="myInput" bindchange="bindChange"/>
-<button  bindtap="modalTap">添加</button>
-    <modal title="添加科目" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="modalFirm" bindcancel="modalCancel" bindlongtap="longtap">{{inputText}}</modal>
-</view>
-
+  <view class="add">
+    <view class="input_name">
+      <label style="margin-top:10rpx;">输入名称：</label>
+      <button class="btn_name" plain="true" >
+        <input style="margin-top:16rpx;" id="myInput"  maxlength="12" bindinput="bindChange"/>
+      </button>
+    </view>
+    <button  bindtap="modalTap0" style="margin-top:30rpx;">确认</button>
+  </view>
+  <button style="margin-top:40rpx;" bindlongtap="modalTap1">长按恢复默认题库</button>
+  <modal title="{{modalTitle}}" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="modalFirm" bindcancel="modalCancel" bindlongtap="longtap">{{modalMsg}}</modal>
 </view>

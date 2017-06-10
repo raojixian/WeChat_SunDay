@@ -1,0 +1,7 @@
+<!--pages/main/judge/judge.wxml-->
+<view class="page">
+  <view class="item" wx:for="{{order}}" wx:for-item="key" id = "{{key}}">
+    <text class="item_left" id = "{{key}}">{{items[key][1]}}</text>
+    <view class="item_right" id = "{{key}}" bindtap="itemtap" >{{show[key]}}</view>
+  </view>
+</view>

@@ -1,1 +1,11 @@
 /* pages/lib/addLib/addLib.wxss */
+
+.input_name{
+  display:flex;
+  margin-top:0rpx;
+  height:80rpx ;
+}
+.btn_name{
+  height:80rpx;
+  margin-left:0rpx;
+}

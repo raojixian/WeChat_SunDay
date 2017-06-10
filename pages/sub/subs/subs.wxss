@@ -17,19 +17,7 @@
   position: absolute;
   right: 0rpx ;  
 }
-
-
-.scroll-item{
-    margin-top: 20rpx ;  
-    height: 120rpx;
-    font-size: 40rpx;
-    text-align: center;
-}
-
-.page_title{
-    display: inline-block;
-    margin-top: 30rpx;
-    font-size: 40rpx;
-    color: #000000;
-    
+.section{
+  margin-top: 20rpx ;
+  height: 990rpx;
 }

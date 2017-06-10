@@ -2,133 +2,107 @@
 var app = getApp()
 var hander = require('../../../utils/dataHander.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     items: [],
     tishu: 0,
     index: 0,
     item: [],
     answers: '',
-    bc_default: '#FCFCFC',
-    bc_select: '#0999C7',
+    bc_default: '#FBFBFB',
+    bc_select: '#CAE1FF',
     bcA: '',
     bcB: '',
     bcC: '',
     bcD: '',
     bcE: '',
+    bcF: '',
     array: [],
-    
   },
 
   setQuestion: function () {
-    var i = this.data.index
+    var that = this;
+    var i = that.data.index
+    this.setData({item: that.data.items[i]});
 
-    this.setData({
-      item: this.data.items[i],
-    })
+    var ans = that.data.answers[that.data.index];
 
-    var ans = this.data.answers[this.data.index];
+    if (ans.indexOf('A') >= 0) this.setData({ bcA: that.data.bc_select});
+    else this.setData({ bcA: that.data.bc_default});
 
-    if (ans.indexOf('A')>=0) this.setData({bcA: this.data.bc_select});
-    else this.setData({ bcA: this.data.bc_default});
+    if (ans.indexOf('B') >= 0) this.setData({ bcB: that.data.bc_select});
+    else this.setData({ bcB: that.data.bc_default});
 
-    if (ans.indexOf('B') >= 0) this.setData({ bcB: this.data.bc_select});
-    else this.setData({ bcB: this.data.bc_default});
+    if (ans.indexOf('C') >= 0) this.setData({ bcC: that.data.bc_select});
+    else this.setData({ bcC: that.data.bc_default});
 
-    if (ans.indexOf('C') >= 0) this.setData({ bcC: this.data.bc_select});
-    else this.setData({ bcC: this.data.bc_default});
+    if (ans.indexOf('D') >= 0) this.setData({ bcD: that.data.bc_select});
+    else this.setData({ bcD: that.data.bc_default});
 
-    if (ans.indexOf('D') >= 0) this.setData({ bcD: this.data.bc_select});
-    else this.setData({ bcD: this.data.bc_default});
+    if (ans.indexOf('E') >= 0) this.setData({ bcE: that.data.bc_select});
+    else this.setData({ bcE: that.data.bc_default});
 
-    if (ans.indexOf('E') >= 0) this.setData({ bcE: this.data.bc_select});
-    else this.setData({ bcE: this.data.bc_default});
+    if (ans.indexOf('F') >= 0) this.setData({ bcE: that.data.bc_select });
+    else this.setData({ bcF: that.data.bc_default });
 
   },
   btnOpClick: function (e) {
+    var that = this;
     var select = e.currentTarget.id;
-    if (this.data.answers[this.data.index].indexOf(select) < 0) {//如果用户答案不包括选项
-      this.data.answers[this.data.index] = this.data.answers[this.data.index] + select;//增加选项
-      //console.log(this.data.answers[this.data.index]);
+    if (that.data.answers[that.data.index].indexOf(select) < 0) {//如果用户答案不包括选项
+      this.data.answers[that.data.index] = that.data.answers[that.data.index] + select;//增加选项
 
-      if (select == 'A') {
-        this.setData({bcA: this.data.bc_select});
-      }
-      else if (select == 'B') {
-        this.setData({bcB: this.data.bc_select});
-      }
-      else if (select == 'C') {
-        this.setData({bcC: this.data.bc_select});
-      }
-      else if (select == 'D') {
-        this.setData({bcD: this.data.bc_select});
-      }
-      else if (select == 'E') {
-        this.setData({ bcE: this.data.bc_select});
-      } 
+      if (select == 'A') {this.setData({ bcA: that.data.bc_select});}
+      else if (select == 'B') {this.setData({ bcB: that.data.bc_select});}
+      else if (select == 'C') {this.setData({ bcC: that.data.bc_select});}
+      else if (select == 'D') {this.setData({ bcD: that.data.bc_select});}
+      else if (select == 'E') {this.setData({ bcE: that.data.bc_select});} 
+      else if (select == 'F') {this.setData({ bcF: that.data.bc_select });}
     }
     else{
-      var s = this.data.answers[this.data.index]
+      //去掉答案
+      var s = that.data.answers[that.data.index]
       var index = s.indexOf(select);
-      this.data.answers[this.data.index] = s.slice(0, index) + s.slice(index+1)
-      //console.log(this.data.answers[this.data.index]);
-      
-      if (select == 'A') {
-        this.setData({ bcA: this.data.bc_default });
-      }
-      else if (select == 'B') {
-        this.setData({ bcB: this.data.bc_default });
-      }
-      else if (select == 'C') {
-        this.setData({ bcC: this.data.bc_default });
-      }
-      else if (select == 'D') {
-        this.setData({ bcD: this.data.bc_default });
-      }
-      else if (select == 'E') {
-        this.setData({ bcE: this.data.bc_default });
-      }   
+      this.data.answers[that.data.index] = s.slice(0, index) + s.slice(index+1);
+      if (select == 'A') {this.setData({ bcA: that.data.bc_default });}
+      else if (select == 'B') {this.setData({ bcB: that.data.bc_default });}
+      else if (select == 'C') {this.setData({ bcC: that.data.bc_default });}
+      else if (select == 'D') {this.setData({ bcD: that.data.bc_default });}
+      else if (select == 'E') {this.setData({ bcE: that.data.bc_default });}
+      else if (select == 'F') {this.setData({ bcF: that.data.bc_default });}  
     }
-
   },
   nextQuestion: function () {
-    if (this.data.index < this.data.tishu - 1) {
-      this.setData({ index: this.data.index + 1 });
-      this.setQuestion();
+    var that = this;
+    if (that.data.index < that.data.tishu - 1) {
+      this.setData({ index: that.data.index + 1 });
+      that.setQuestion();
     }
   },
   lastQuestion: function () {
-    if (this.data.index > 0) {
-      this.setData({ index: this.data.index - 1 });
-      this.setQuestion();
+    var that = this;
+    if (that.data.index > 0) {
+      this.setData({ index: that.data.index - 1 });
+      that.setQuestion();
     }
   },
   //提交
   submit: function () {
-    app.globalData.answers = this.data.answers;
-    wx.redirectTo({
-      url: '../result/result'
-    })
+    var that = this;
+    app.globalData.answers = that.data.answers;
+    wx.redirectTo({url: '../result/result'});
   },
   bindPickerChange: function (e) {
-    this.setData({
-      index: parseInt(e.detail.value)
-    })
+    this.setData({index: parseInt(e.detail.value)});
+    var that = this;
     this.setQuestion();
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     var len = app.globalData.items.length;
     var answers = new Array(len);
     answers.fill('');
     var arr = new Array(len);
     for (var i = 0; i < len; i++) {
-      arr[i] = app.globalData.items[i][1];
+      arr[i] = app.globalData.items[i][1].substring(0, 22);
     }
     this.setData({
       items: app.globalData.items,
@@ -136,53 +110,7 @@ Page({
       answers:answers,
       array: arr,
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    var that = this;
     this.setQuestion();
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
 })

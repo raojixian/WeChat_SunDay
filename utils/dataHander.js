@@ -1,58 +1,57 @@
 var app = getApp()
-
-var jsondata = {
-  "学科1": {
-    "题库1": {
-      "type": 0,
-      "data": [
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D']]
-    },
-    "题库2": {
-      "type": 0,
-      "data": [
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D']]
-    }
-  },
-  "学科2": {
-    "题库1": {
-      "type": 0,
-      "data": [
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D']]
-    },
-    "题库2": {
-      "type": 0,
-      "data": [
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D'],
-        ['A', 'T', 'A', 'B', 'C', 'D']]
-    }
-  }
-}
-
 //保存题库
 function saveData() {
-  //app.globalData.libs = libs
   wx.setStorage({
     key: 'libs',
-    data: JSON.stringify(app.globalData.libs),
-    //data: JSON.stringify(jsondata),
-    success: function (res) {
+    data: app.globalData.libs,
+    /*success: function (res) {
       console.log('异步保存成功')
-    }
+    }*/
   })
 }
 
+//得到默认科目和题库排列顺序
+function getNameOrder(){
+  var libs = require('/defaultLib.js').defaultLibs;
+  var nameOrder = [];
+  for (var key in libs){
+    var itemOrder = [];
+    itemOrder.push(key);
+    for (var subKey in libs[key]){
+      itemOrder.push(subKey);
+    }
+    nameOrder.push(itemOrder);
+  }
+  console.log(nameOrder);
+  return nameOrder
+}
 
+//得到Lib名称排序
+function getLibsName() {
+  var name_order = app.globalData.name_order;
+  var libsName = [];
+  for (var i = 0; i < name_order.length;i++){
+    libsName.push(name_order[i][0]);
+  }
+  console.log(libsName)
+  return libsName
+}
+
+//得到指定Lib下的题库名
+function getSubsName(libName){
+  var name_order = app.globalData.name_order;
+  var subsName = [];
+  for (var i = 0; i < name_order.length; i++) {
+    if (name_order[i][0] == libName){
+      subsName = name_order[i].slice(1);
+      break;
+    }  
+  }
+  console.log(subsName)
+  return subsName
+}
+
+/*
 //得到所有Lib
 function getLibsName() {
   var libsName = []
@@ -71,7 +70,7 @@ function getSubsName(libName) {
     subName.push(key)
   }
   return subName
-}
+}*/
 
 //得到指定Lib下的指定题库
 function getSubData(libName,subName) {
@@ -99,14 +98,12 @@ function addLib(libName) {
     return false
   }
 }
-
 //删除一个Lib
 function removeLib(libname) {
   delete app.globalData.libs[libname];
   saveData();
   return true;
 }
-
 //增加一个Sub
 function addSub(subName){
   var lib = app.globalData.libs[app.globalData.selectLib];
@@ -121,8 +118,7 @@ function addSub(subName){
     return false;
   }
 }
-
-//删除一个Lib
+//删除一个Sub
 function removeSub(subName) {
   var lib = app.globalData.libs[app.globalData.selectLib];
   delete lib[subName];
@@ -130,7 +126,21 @@ function removeSub(subName) {
   saveData();
   return true;
 }
-
+//乱序
+function outOfOrder(items){
+  var newitems = items.slice(0);
+  var len = items.length;
+ //将列表随机打乱3*len次
+  for (var i = 0; i < 3 * len; i++){
+   //得到随机数
+   var rnd = parseInt(Math.random() * len, 10);
+   //交换选项
+   var item = newitems[0];
+   newitems[0] = newitems[rnd];
+   newitems[rnd] = item;
+  }
+ return newitems;
+}
 
 module.exports = {
   saveData,
@@ -141,5 +151,7 @@ module.exports = {
   addSub,
   removeSub,
   getSubData,
+  outOfOrder,
+  getNameOrder,
   isNull
 }

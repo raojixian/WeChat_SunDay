@@ -1,22 +1,20 @@
 <!--pages/main/single1/single1.wxml-->
-
-
 <view class="page">
-<scroll-view scroll-y style="height: 320rpx;">
-<label class="lbl_title">{{item[1]}}</label>
-</scroll-view>
- <scroll-view scroll-y style="height: 720rpx; margin-top: 20rpx;">
-<button id='A' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcA}} ;margin-top: 0rpx;">{{item[2]}}</button>
-<button id='B' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcB}};" >{{item[3]}}</button>
-<button id='C' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcC}};" >{{item[4]}}</button>
-<button id='D' class="btn_op" wx:if="{{item.length>5}}" bindtap="btnOpClick" style="background-color: {{bcD}};" >{{item[5]}}</button>
-</scroll-view>
-<view class="page_bottom">
-<button class="btn_right" bindtap="submit"   plain="true">批</button>
-<picker value="{{time}}" value="{{index}}" range="{{array}}" bindchange="bindPickerChange">
-  <view class="msg">{{index+1}}/{{tishu}}</view>
-</picker>
-<button class="btn_last" bindtap="lastQuestion"  plain="true">◀</button>
-<button class="btn_next" bindtap="nextQuestion"  plain="true">▶</button>
-</view>
+  <scroll-view scroll-y style="height: 320rpx;">
+    <label class="page_title">{{item[1]}}</label>
+  </scroll-view>
+  <scroll-view scroll-y style="height: 720rpx; margin-top: 20rpx;">
+    <button id='A' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcA}};">{{item[2]}}</button>
+    <button id='B' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcB}};" >{{item[3]}}</button>
+    <button id='C' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcC}};" >{{item[4]}}</button>
+    <button id='D' class="btn_op" wx:if="{{item.length >= 6}}" bindtap="btnOpClick" style="background-color: {{bcD}};" >{{item[5]}}</button>
+  </scroll-view>
+  <view class="page_bottom">
+    <button class="page_bottom_left" bindtap="submit"   plain="true">☃</button>
+    <picker value="{{time}}" value="{{index}}" range="{{array}}" bindchange="bindPickerChange">
+      <view class="page_bottom_msg">{{index+1}}/{{tishu}}</view>
+    </picker>
+    <button class="page_bottom_last" bindtap="lastQuestion"  plain="true">◀</button>
+    <button class="page_bottom_next" bindtap="nextQuestion"  plain="true">▶</button>
+  </view>
 </view>
