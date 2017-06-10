@@ -9,7 +9,7 @@ Page({
     inputShow: true ,
     btn1Name:'清空',
     btn2Name:"查找",
-    name: '',
+    name:'',
     rbtnChecked: 'a',
     modalHidden:true,
   },
@@ -25,8 +25,9 @@ Page({
   },
   //得到名称
   getName:function(e){
+    var str = e.detail.value;
     this.setData({
-      name: e.detail.value
+      name: str.replace(/(^\s*)|(\s*$)/g, "")
     })
   }
   ,
@@ -85,7 +86,7 @@ Page({
         title: '没有题目哦',
         })
       }
-      else if (hander.isNull(that.data.name) ) {
+      else if(that.data.name == ''){
         wx.showToast({
           title: '名称不能为空',
         })
@@ -96,7 +97,6 @@ Page({
         })
       }
     }
-    
   },
   //确认
   modalFirm: function (e) {

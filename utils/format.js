@@ -1,14 +1,7 @@
-var app = getApp();
-var libs = app.globalData.libs;
-
-var txt = "";//原文本
-var type = 0; //格式化题型
-var isDrop = false; //是否去掉序号
-var data = [];
 
 
 //寻找下一题,返回值[是否存在，开始位置，长度]
-function findAllQuestion(s,tp) {
+function findAllQuestion(s, tp) {
   var all = [];
   s = "\n" + s;//在字符串头加上换行符
   var re = null;
@@ -19,10 +12,10 @@ function findAllQuestion(s,tp) {
   if (arr != null) var start = re.lastIndex - arr[0].length; //得到开始位置
   while (arr != null) {
     arr = re.exec(s);//寻找下一个
-    if (arr != null){
+    if (arr != null) {
       var next = re.lastIndex - arr[0].length;//得到下一题开始的位置
       all.push(s.slice(start, next));
-      start = next; 
+      start = next;
     }
     else {
       all.push(s.slice(start));
@@ -75,7 +68,7 @@ function getMultipleTitle(li) {
   var line = li;
   var re = /[(（]([　 A-F]+)[[）)]/g;
   var arr = re.exec(line);
-  if (arr != null){
+  if (arr != null) {
     title[0] = arr[1].replace(/[　 ]/g, "");
     line = line.replace(re, "___");
     line = line.replace("\n", "");
@@ -93,12 +86,12 @@ function getMultipleTitle(li) {
 
 
 //得到一个单选题
-function getASingle(s){
+function getASingle(s) {
   s = s + "\n";
   var ti = [];
   var re = /(.*[（(][　 ]*[A-D][　 ]*[)）].*?)[　 \n;\t]+(A.*?)[　 \n;\t]+(B.*?)[　 \n;\t]+(C.*?)[　 \n;\t]+(D.*?)\n/g;
   var arr = re.exec(s);
-  if (arr != null){
+  if (arr != null) {
     var title = getSingleTitle(arr[1]);
     ti.push(title[0]);
     ti.push(title[1]);
@@ -107,7 +100,7 @@ function getASingle(s){
     ti.push(formatOption(arr[4]));
     ti.push(formatOption(arr[5]));
   }
-  else{//尝试匹配三个选项
+  else {//尝试匹配三个选项
     var re = /(.*[（(][　 ]*[A-C][　 ]*[)）].*?)[　 \n;\t]+(A.*?)[　 \n;\t]+(B.*?)[　 \n;\t]+(C.*?)\n/g;
     var arr = re.exec(s);
     if (arr != null) {
@@ -124,7 +117,7 @@ function getASingle(s){
 }
 
 //得到一个多选题
-function getAMultiple(s){
+function getAMultiple(s) {
   s = s + "\n";
   var ti = [];
   //尝试匹配六个选项的多选题
@@ -154,7 +147,7 @@ function getAMultiple(s){
       ti.push(formatOption(arr[4]));
       ti.push(formatOption(arr[5]));
       ti.push(formatOption(arr[6]));
-    }else{
+    } else {
       //尝试匹配四个选项的多选题
       var re = /(.*[（(][　 A-D]+[)）].*?)[　 \n;\t]+(A.*?)[　 \n;\t]+(B.*?)[　 \n;\t]+(C.*?)[　 \n;\t]+(D.*?)\n/g;
       var arr = re.exec(s);
@@ -166,10 +159,10 @@ function getAMultiple(s){
         ti.push(formatOption(arr[3]));
         ti.push(formatOption(arr[4]));
         ti.push(formatOption(arr[5]));
-        }
-        else return null;
+      }
+      else return null;
     }
-    
+
   }
   return ti;
 }
@@ -194,10 +187,10 @@ function formAllJudge(s) {
     }
     //格式化答案
     var right = '对√是✔';
-    if (right.indexOf(daan) >= 0){
+    if (right.indexOf(daan) >= 0) {
       daan = '对';
     }
-    else{
+    else {
       daan = '错';
     }
     var item = [];
@@ -211,40 +204,41 @@ function formAllJudge(s) {
 
 
 
-function form(s,tp){
+function form(s, tp) {
   var items = [];
-  
-  if(tp == 0){//如果是单选类型
-    var all = findAllQuestion(s,tp);
-    for(var i = 0;i<all.length;i++){
+
+  if (tp == 0) {//如果是单选类型
+    var all = findAllQuestion(s, tp);
+    for (var i = 0; i < all.length; i++) {
       var ti = getASingle(all[i]);
       if (ti != null) items.push(ti);
     }
   }
   else if (tp == 1) {//如果是多选类型
-    var all = findAllQuestion(s,tp);
+    var all = findAllQuestion(s, tp);
     for (var i = 0; i < all.length; i++) {
       var ti = getAMultiple(all[i]);
-      if (ti != null){
+      if (ti != null) {
         items.push(ti);
-      } 
+      }
     }
   }
-  else if (tp==2){
+  else if (tp == 2) {
     items = formAllJudge(s);
   }
 
-  if (items.length > 0){
+  var app = getApp();
+  if (items.length > 0) {
     app.globalData.form_len = items.length;
     app.globalData.form = { "type": tp, "items": items };
   }
-  else{
+  else {
     app.globalData.form = null
   }
 
   var str = "";
-  for (var i = 0; i < items.length;i++){
-    for (var j = 0; j < items[i].length ; j++){
+  for (var i = 0; i < items.length; i++) {
+    for (var j = 0; j < items[i].length; j++) {
       str = str + items[i][j] + "\n";
     }
     str = str + "\n";

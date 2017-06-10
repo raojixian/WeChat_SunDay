@@ -7,20 +7,22 @@ Page({
    */
   data: {
     modalHidden: true,
-    inputText : "",
+    name: "",
     modalTitle:'添加科目',
     modalMsg: "",
     modaltap : 0,
   },
-  bindChange: function (e) {
+  //得到名称
+  getName: function (e) {
+    var str = e.detail.value;
     this.setData({
-      inputText: e.detail.value
+      name: str.replace(/(^\s*)|(\s*$)/g, "")
     })
   },
   //切换到modal对话框,添加科目
    modalTap0: function (e) {
      var that = this;
-     if (hander.isNull(that.data.inputText)){
+     if (that.data.name == ''){
        wx.showToast({
          title: '名称不能为空',
        })
@@ -29,7 +31,7 @@ Page({
        this.setData({
          modaltap:0,
          modalTitle: '添加科目',
-         modalMsg: that.data.inputText,
+         modalMsg: str,
          modalHidden: false
        })
      }
@@ -51,7 +53,7 @@ Page({
        modalHidden: true
      })
      if (that.data.modaltap == 0){
-       if (hander.addLib(that.data.inputText)) {
+       if (hander.addLib(that.data.name)) {
          wx.showToast({
            title: '添加成功',
          })
@@ -67,7 +69,6 @@ Page({
        wx.setStorage({
          key: 'libs',
          data: def.defaultLibs,
-         
          /*success: function (res) {
            console.log('默认题库保存成功')
          }*/

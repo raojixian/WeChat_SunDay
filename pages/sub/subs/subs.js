@@ -17,8 +17,9 @@ Page({
   },
   itemtap: function (e) {
     var that = this;
-    app.globalData.selectSub = e.currentTarget.id;
-    var sub = hander.getSubData(app.globalData.selectLib, app.globalData.selectSub);
+    var selectSub = e.currentTarget.id;
+    app.globalData.selectSub = selectSub;
+    var sub = app.globalData.libs[app.globalData.selectLib][selectSub]
     var items = sub['items'];
     var tp = sub['type'];
     //设置items乱序
@@ -107,20 +108,51 @@ Page({
         title: '删除成功',
       })
       this.setData({
-        items: hander.getSubsName(app.globalData.selectLib)
+        items: hander.getSubsName()
       })
     }
   },
   //取消
   modalCancel: function (e) {
     this.setData({
-      modalHidden: true,
-      items: hander.getSubsName(app.globalData.selectLib)
+      modalHidden: true
     })
+  },
+  moveUp: function () {
+    var that = this;
+    this.setData({
+      actionSheetHidden: true
+    })
+    if (hander.moveSub(that.data.selectSub, 0)) {
+      this.setData({
+        items: hander.getSubsName()
+      })
+    }
+    else {
+      wx.showToast({
+        title: '到顶啦！',
+      })
+    }
+  },
+  moveDown: function () {
+    var that = this;
+    this.setData({
+      actionSheetHidden: true
+    })
+    if (hander.moveSub(that.data.selectSub, 1)) {
+      this.setData({
+        items: hander.getSubsName()
+      })
+    }
+    else {
+      wx.showToast({
+        title: '到底啦！',
+      })
+    }
   },
   onShow: function () {
     this.setData({
-      items: hander.getSubsName(app.globalData.selectLib)
+      items: hander.getSubsName()
     })
   }
 })

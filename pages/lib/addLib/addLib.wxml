@@ -4,7 +4,7 @@
     <view class="input_name">
       <label style="margin-top:10rpx;">输入名称：</label>
       <button class="btn_name" plain="true" >
-        <input style="margin-top:16rpx;" id="myInput"  maxlength="12" bindinput="bindChange"/>
+        <input style="margin-top:16rpx;" id="myInput"  maxlength="12" bindinput="getName"/>
       </button>
     </view>
     <button  bindtap="modalTap0" style="margin-top:30rpx;">确认</button>

@@ -24,7 +24,7 @@ Page({
     var that = this;
     this.setData({
       selectLib: e.currentTarget.id,
-      actionSheetHidden: !that.data.actionSheetHidden
+      actionSheetHidden: false
     })
   },
   actionSheetChange: function (e) {
@@ -37,7 +37,7 @@ Page({
   tapModal:function(){
     var that = this;
     this.setData({
-      actionSheetHidden: !that.data.actionSheetHidden,
+      actionSheetHidden: true,
       modalHidden : false
     })
   },
@@ -62,11 +62,43 @@ Page({
       modalHidden: true
     })
   },
-  onLoad: function () {
+  moveUp :function(){
+    var that = this;
+    this.setData({
+      actionSheetHidden: true
+    })
+    if (hander.moveLib(that.data.selectLib,0)) {
+      this.setData({
+        items: hander.getLibsName()
+      })
+    }
+    else{
+      wx.showToast({
+        title: '到顶啦！',
+      })
+    }
+  },
+  moveDown: function () {
+    var that = this;
+    this.setData({
+      actionSheetHidden: true
+    })
+    if (hander.moveLib(that.data.selectLib, 1)) {
+      this.setData({
+        items: hander.getLibsName()
+      })
+    }
+    else {
+      wx.showToast({
+        title: '到底啦！',
+      })
+    }
+  },
+  /*onLoad: function () {
     this.setData({
       items: hander.getLibsName()
     })
-  },
+  },*/
   onShow: function(){
     this.setData({
       items: hander.getLibsName()
