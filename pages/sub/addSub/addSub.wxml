@@ -2,25 +2,27 @@
 <view class="page">
   <view class="input_name">
     <label style="margin-top:10rpx;">输入名称：</label>
-    <button class="btn_name" plain="true" >
-      <input style="margin-top:16rpx;" id="myInput"  maxlength="12" bindinput="getName"/>
+    <button class="btn_name" plain="true">
+      <input style="margin-top:16rpx;" id="myInput" maxlength="12" bindinput="getName" />
     </button>
   </view>
-  <view class="select"  style="margin-top: 10rpx;" >
+  <view class="select" style="margin-top: 10rpx;">
     <radio-group class="radio-group" bindchange="radioChange">
-      <radio value="a" checked="true" /><text>单选 </text>
-      <radio value="b"/><text>多选 </text>
-      <radio value="c"/><text>判断</text>
+      <radio value="a" checked="true" />
+      <text>单选 </text>
+      <radio value="b" />
+      <text>多选 </text>
+      <radio value="c" />
+      <text>判断</text>
     </radio-group>
   </view>
-  <textarea wx:if="{{inputShow}}" class="show_text" maxlength="200000" placeholder="选择题型→将题库复制到此处→查找" value = "{{txt}}" bindinput="txtChange" placeholder-style="color:red;"/>
+  <textarea wx:if="{{inputShow}}" class="show_text" maxlength="200000" placeholder="选择题型→将题库复制到此处→查找" value="{{txt}}" bindinput="txtChange" placeholder-style="color:red;" />
   <scroll-view wx:if="{{!inputShow}}" scroll-y style="height:910rpx; margin-top:10rpx;">
-  <text>{{formTxt}}</text>
+    <text>{{formTxt}}</text>
   </scroll-view>
+  <modal title="添加题库" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="modalFirm" bindcancel="modalCancel">{{name}}</modal>
   <view class="pageAdd_bottom">
-    <modal title="添加题库" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="modalFirm" bindcancel="modalCancel">{{name}}</modal>
-    <button class="flex-item" bindtap="btn1click" >{{btn1Name}}</button>
+    <button class="flex-item" bindtap="btn1click">{{btn1Name}}</button>
     <button class="flex-item" bindtap="btn2click">{{btn2Name}}</button>
   </view>
 </view>
-

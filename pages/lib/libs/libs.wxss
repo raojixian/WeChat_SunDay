@@ -1,6 +1,39 @@
 /* pages/lib/libs/libs.wxss */
 
-.section{
-  margin-top: 20rpx ;
+.section {
+  margin-top: 20rpx;
   height: 1076rpx;
+}
+
+.alter_name {
+  position: fixed;
+  top: 490rpx;
+  background-color: #ddd;
+  height: 200rpx;
+  width: 510rpx;
+  left: 120rpx;
+}
+
+.input_name {
+  display: flex;
+  margin-top: 10rpx;
+  height: 80rpx;
+}
+
+.alter_btn {
+  width: 100%;
+  margin-top: 20rpx;
+  height: 80rpx;
+  bottom: 20rpx;
+  display: flex;
+}
+
+.flex-item {
+  width: 150rpx;
+  height: 80rpx;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -18,19 +18,6 @@ function saveData() {
   })
 }
 
-//判断字符串是否为空或全为空格,返回
-function formName(str) {
-  if (str == "") return -1;
-  var regu = "^[ ]+$";
-  var re = new RegExp(regu);
-  if (re.test(str)) {
-    return -1;
-  }
-  else {
-    return str.replace(/(^\s*)|(\s*$)/g, "");
-  }
-}
-
 //得到Lib名称排序
 function getLibsName() {
   var name_order = null;
@@ -99,10 +86,10 @@ function addSub(subName) {
 
 //删除一个Lib
 function removeLib(libName) {
-  delete app.globalData.libs[libName];
   var name_order = app.globalData.name_order;
   for (var i = 0; i < name_order.length; i++) {
     if (name_order[i][0] == libName) {
+      delete app.globalData.libs[libName];
       name_order.splice(i, 1);
       break;
     }
@@ -116,12 +103,12 @@ function removeSub(subName) {
   var libName = app.globalData.selectLib;
   var lib = app.globalData.libs[libName];
   var name_order = app.globalData.name_order;
-  delete lib[subName];
   for (var i = 0; i < name_order.length; i++) {
     if (name_order[i][0] == libName) {
       var libItem = name_order[i];
       for (var j = 1; j < libItem.length; j++) {
-        if (libItem[j] == subName) {
+        if (libItem[j] == subName){
+          delete lib[subName];
           libItem.splice(j, 1);
           break;
         }
@@ -155,7 +142,7 @@ function moveLib(libName, direction) {
   return false;
 }
 
-
+//移动Sub
 function moveSub(subName, direction) {
   var libName = app.globalData.selectLib;
   var name_order = app.globalData.name_order;
@@ -184,6 +171,54 @@ function moveSub(subName, direction) {
   return false;
 }
 
+//重命名科目
+function alterLib(libName,newName){
+  var libs = app.globalData.libs;
+  if (libs[newName] != null) return 0;
+  var lib = libs[libName];
+  var name_order = app.globalData.name_order;
+  for (var i = 0; i < name_order.length; i++){
+    if (name_order[i][0] == libName) {
+      delete libs[libName];
+      libs[newName] = lib;
+      name_order[i][0] = newName; 
+      console.log('修改成功！')
+      break;
+    }
+  }
+  saveData();
+  return 1;
+}
+
+
+//重名名题库
+function alterSub(subName, newName) {
+  var libName = app.globalData.selectLib;
+  var lib = app.globalData.libs[libName];
+  if (lib[newName] != null) return 0;//如果存在
+  var sub = lib[subName];
+  var name_order = app.globalData.name_order;
+  for (var i = 0; i < name_order.length; i++) {
+    if (name_order[i][0] == libName) {
+      var libItem = name_order[i];
+      for (var j = 1; j < libItem.length; j++) {
+        if (libItem[j] == subName) {
+          delete lib[subName];
+          lib[newName] = sub;
+          libItem[j] = newName;
+          //name_order[i][j] = newName;
+          console.log('修改成功！')
+          break;
+        }
+      }
+    }
+  }
+  saveData();
+  return 1;
+  
+}
+
+
 //乱序
 function outOfOrder(items) {
   var newitems = items.slice(0);
@@ -209,6 +244,7 @@ module.exports = {
   removeSub,
   moveLib,
   moveSub,
-  outOfOrder,
-  formName
+  alterLib,
+  alterSub,
+  outOfOrder
 }

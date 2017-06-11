@@ -9,6 +9,8 @@ Page({
     selectSub: '',
     rbtnChecked: 'a',
     actionSheetHidden: true,
+    alterShow: false,
+    name: ''
   },
   btnAddClick: function () {
     wx.navigateTo({
@@ -80,7 +82,9 @@ Page({
     var that = this;
     this.setData({
       selectSub: e.currentTarget.id,
-      actionSheetHidden: false
+      actionSheetHidden: false,
+      alterShow: false,
+      name: e.currentTarget.id
     })
   },
   actionSheetChange: function (e) {
@@ -105,7 +109,7 @@ Page({
     })
     if (hander.removeSub(that.data.selectSub)) {
       wx.showToast({
-        title: '删除成功',
+        title: '已删除',
       })
       this.setData({
         items: hander.getSubsName()
@@ -148,6 +152,48 @@ Page({
       wx.showToast({
         title: '到底啦！',
       })
+    }
+  },
+  alterTap: function () {
+    this.setData({
+      actionSheetHidden: true,
+      alterShow: true
+    })
+  },
+  //得到名称
+  getName: function (e) {
+    var str = e.detail.value;
+    this.setData({
+      name: str.replace(/(^\s*)|(\s*$)/g, "")
+    })
+  },
+  alterCancel: function () {
+    this.setData({
+      alterShow: false
+    })
+  },
+  alterConfirm: function () {
+    var that = this;
+    if (that.data.name == '') {
+      wx.showToast({
+        title: '名称不能为空',
+      })
+    } else {
+      var state = hander.alterSub(that.data.selectSub, that.data.name);
+      if (state == 1) {
+        this.setData({
+          alterShow: false,
+          items: hander.getSubsName()
+        })
+        wx.showToast({
+          title: '已重命名',
+        })
+      }
+      else if (state == 0) {
+        wx.showToast({
+          title: '已存在',
+        })
+      }
     }
   },
   onShow: function () {

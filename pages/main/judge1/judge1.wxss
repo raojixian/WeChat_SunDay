@@ -1,32 +1,31 @@
 /* pages/main/judge1/judge1.wxss */
 
-.item{
-    margin-bottom: 30rpx;  
-    min-height: 120rpx;
-    display:flex;
-    border: 2rpx solid;
-    border-color:#FFFFFF;
-    border-top-color:#DDDDDD;
+.item {
+  margin-bottom: 30rpx;
+  min-height: 120rpx;
+  display: flex;
+  border: 2rpx solid;
+  border-color: #fff;
+  border-top-color: #ddd;
 }
 
-
-.item_left{
+.item_left {
   bottom: 0rpx;
-  width:630rpx;
+  width: 630rpx;
   text-align: left;
   font-size: 40rpx;
   line-height: 50rpx;
 }
 
-.item_right{
-  width:120rpx;
+.item_right {
+  width: 120rpx;
   height: 120rpx;
-  text-align:center;
+  text-align: center;
   font-size: 40rpx;
   line-height: 120rpx;
-  background-color: #FBFBFB;
+  background-color: #fbfbfb;
   border: 2rpx solid;
-  border-color:#FBFBFB;
-  border-left-color:#DDDDDD;
-  border-bottom-color:#DDDDDD;
+  border-color: #fbfbfb;
+  border-left-color: #ddd;
+  border-bottom-color: #ddd;
 }

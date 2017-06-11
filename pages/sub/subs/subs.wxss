@@ -1,23 +1,56 @@
 /* pages/sub/subs/subs.wxss */
 
-.page_hd{
-  margin-top: 20rpx ;  
+.page_hd {
+  margin-top: 20rpx;
   width: 100%;
   height: 65rpx;
-  display:flex;
-  /*flex-direction:row;*/
+  display: flex;
 }
 
-.radio_group{
+.radio_group {
   position: relative;
-  top:6rpx;
+  top: 6rpx;
 }
 
-.hd_switch{
+.hd_switch {
   position: absolute;
-  right: 0rpx ;  
+  right: 0rpx;
 }
-.section{
-  margin-top: 20rpx ;
+
+.section {
+  margin-top: 20rpx;
   height: 990rpx;
+}
+
+.alter_name {
+  position: fixed;
+  top: 490rpx;
+  background-color: #ddd;
+  height: 200rpx;
+  width: 510rpx;
+  left: 120rpx;
+}
+
+.input_name {
+  display: flex;
+  margin-top: 10rpx;
+  height: 80rpx;
+}
+
+.alter_btn {
+  width: 100%;
+  margin-top: 20rpx;
+  height: 80rpx;
+  bottom: 20rpx;
+  display: flex;
+}
+
+.flex-item {
+  width: 150rpx;
+  height: 80rpx;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
