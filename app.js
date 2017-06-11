@@ -47,16 +47,20 @@ App({
     wx.setStorage({
       key: 'libs',
       data: defaultLibs,
+      /*
       success: function (res) {
         console.log('异步保存成功')
       }
+      */
     });
     wx.setStorage({
       key: 'name_order',
       data: nameOrder,
+      /*
       success: function (res) {
         console.log('异步保存成功')
       }
+      */
     });
   }
 })

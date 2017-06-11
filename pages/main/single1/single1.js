@@ -6,7 +6,7 @@ Page({
     items: [],
     tishu: 0,
     index: 0,
-    answers : [],
+    answers: [],
     item: [],
     bc_default: '#FBFBFB',
     bc_select: '#CAE1FF',
@@ -23,7 +23,7 @@ Page({
       item: that.data.items[i],
     })
     var ans = that.data.answers[that.data.index];
-    if (ans == ''){
+    if (ans == '') {
       this.setData({
         bcA: that.data.bc_default,
         bcB: that.data.bc_default,
@@ -104,24 +104,24 @@ Page({
   nextQuestion: function () {
     var that = this;
     if (that.data.index < that.data.items.length - 1) {
-      this.setData({ index: that.data.index + 1});
+      this.setData({ index: that.data.index + 1 });
       that.setQuestion();
     }
   },
   lastQuestion: function () {
     var that = this;
     if (that.data.index > 0) {
-      this.setData({ index: that.data.index - 1});
+      this.setData({ index: that.data.index - 1 });
       that.setQuestion();
     }
   },
   submit: function () {
     var that = this;
     app.globalData.answers = that.data.answers;
-    wx.redirectTo({url:  '../result/result'})
+    wx.redirectTo({ url: '../result/result' })
   },
   bindPickerChange: function (e) {
-    this.setData({index: parseInt(e.detail.value)})
+    this.setData({ index: parseInt(e.detail.value) })
     var that = this;
     that.setQuestion();
   },
@@ -136,7 +136,7 @@ Page({
     this.setData({
       items: app.globalData.items,
       tishu: len,
-      answers : answers,
+      answers: answers,
       array: arr,
     });
     var that = this;

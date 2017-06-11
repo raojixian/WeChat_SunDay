@@ -4,7 +4,7 @@ var hander = require('../../../utils/dataHander.js')
 Page({
   data: {
     items: [],
-    order : false,
+    order: false,
     modalHidden: true,
     selectSub: '',
     rbtnChecked: 'a',
@@ -70,7 +70,7 @@ Page({
       rbtnChecked: e.detail.value,
     })
   },
-  switchChange:function(){
+  switchChange: function () {
     var that = this;
     this.data.order = !that.data.order;
   },
@@ -80,7 +80,7 @@ Page({
     var that = this;
     this.setData({
       selectSub: e.currentTarget.id,
-      actionSheetHidden: !that.data.actionSheetHidden
+      actionSheetHidden: false
     })
   },
   actionSheetChange: function (e) {
@@ -90,10 +90,10 @@ Page({
     })
   },
   //切换到modal对话框
-  tapModal:function () {
+  tapModal: function () {
     var that = this;
     this.setData({
-      actionSheetHidden: !that.data.actionSheetHidden,
+      actionSheetHidden: true,
       modalHidden: false
     })
   },

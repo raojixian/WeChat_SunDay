@@ -5,12 +5,12 @@ Page({
   data: {
     items: [],
     show: [],
-    order:[]
+    order: []
   },
-  itemtap:function(e){
+  itemtap: function (e) {
     var that = this;
-    var index =  e.currentTarget.id;
-    if (that.data.show[index] == '♫'){
+    var index = e.currentTarget.id;
+    if (that.data.show[index] == '♫') {
       if (that.data.items[index][0] == '对') this.data.show[index] = '✔';
       else this.data.show[index] = '✘';
       this.setData({
@@ -28,8 +28,8 @@ Page({
     arr.fill('♫');
     this.setData({
       items: app.globalData.items,
-      show : arr,
-      order : order
+      show: arr,
+      order: order
     })
   }
 })

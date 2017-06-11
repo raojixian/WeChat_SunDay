@@ -13,7 +13,7 @@
       <radio value="c"/><text>判断</text>
     </radio-group>
   </view>
-  <textarea wx:if="{{inputShow}}" class="show_text" maxlength="100000" placeholder="选择题型→将题库复制到此处→查找" value = "{{txt}}" bindinput="txtChange" placeholder-style="color:red;"/>
+  <textarea wx:if="{{inputShow}}" class="show_text" maxlength="200000" placeholder="选择题型→将题库复制到此处→查找" value = "{{txt}}" bindinput="txtChange" placeholder-style="color:red;"/>
   <scroll-view wx:if="{{!inputShow}}" scroll-y style="height:910rpx; margin-top:10rpx;">
   <text>{{formTxt}}</text>
   </scroll-view>

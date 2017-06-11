@@ -5,7 +5,7 @@ Page({
   data: {
   },
   //开始学习
-  btnStart:function(){
+  btnStart: function () {
     wx.navigateTo({
       url: '../lib/libs/libs',
     })

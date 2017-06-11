@@ -4,25 +4,25 @@ var hander = require('../../../utils/dataHander.js')
 Page({
   data: {
     tp: 0,//题库类型
-    total : 0,
-    done : 0,
-    wrongNum : 0,
-    wrongText :"",
-    wrongItems:[],
+    total: 0,
+    done: 0,
+    wrongNum: 0,
+    wrongText: "",
+    wrongItems: [],
   },
-  practice : function(){
+  practice: function () {
     var that = this;
-    if (that.data.wrongNum==0){
+    if (that.data.wrongNum == 0) {
       wx.showToast({
         title: "没有错题哦(●'◡'●)ﾉ♥",
       })
     }
-    else{
+    else {
       app.globalData.items = that.data.wrongItems;
-      if (that.data.tp ==0){
-        wx.navigateTo({url: '../single/single'})
+      if (that.data.tp == 0) {
+        wx.navigateTo({ url: '../single/single' })
       }
-      else if (that.data.tp == 1){
+      else if (that.data.tp == 1) {
         wx.navigateTo({ url: '../multiple/multiple' })
       }
       else if (that.data.tp == 2) {
@@ -31,7 +31,7 @@ Page({
     }
   },
   //批改单选题
-  checkSingle:function(){
+  checkSingle: function () {
     var items = app.globalData.items;
     var answers = app.globalData.answers;
     var wrongNum = 0;
@@ -85,7 +85,7 @@ Page({
     for (var i = 0; i < items.length; i++) {
       if (answers[i] != '') {
         doneNum++;
-        if (!that.isRight(items[i][0], answers[i])){
+        if (!that.isRight(items[i][0], answers[i])) {
           wrongNum++;
           wrongItems.push(items[i]);
           wrongText += items[i][0] + " 错误:" + answers[i] + "\n";
@@ -106,7 +106,7 @@ Page({
     });
   },
   //批改判断题
-  checkJudge : function(){
+  checkJudge: function () {
     var items = app.globalData.items;
     var answers = app.globalData.answers;
     var wrongNum = 0;
@@ -133,8 +133,8 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    var tp = hander.getSubData(app.globalData.selectLib, app.globalData.selectSub)['type'];
-    this.setData({tp:tp});
+    var tp = app.globalData.libs[app.globalData.selectLib][app.globalData.selectSub]['type'];
+    this.setData({ tp: tp });
     if (tp == 0) that.checkSingle();
     else if (tp == 1) that.checkMultiple();
     else if (tp == 2) that.checkJudge();

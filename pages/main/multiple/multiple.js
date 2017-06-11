@@ -6,7 +6,7 @@ Page({
     items: [],
     tishu: 0,
     index: 0,
-    item:[],
+    item: [],
     bc_default: '#FBFBFB',
     bc_right: '#98FB98',
     bc_wrong: '#FF99B4',
@@ -17,7 +17,7 @@ Page({
     bcE: '',
     bcF: '',
     array: [],
-    answer:'',
+    answer: '',
   },
 
   setQuestion: function () {
@@ -31,14 +31,14 @@ Page({
       bcD: that.data.bc_default,
       bcE: that.data.bc_default,
       bcF: that.data.bc_default,
-      answer:'',
+      answer: '',
     })
 
   },
   btnOpClick: function (e) {
     var that = this;
     var select = e.currentTarget.id;
-    if (that.data.answer.indexOf(select) < 0){
+    if (that.data.answer.indexOf(select) < 0) {
       this.setData({ answer: that.data.answer + select });//更新用户答案
 
       if (this.data.item[0].indexOf(select) >= 0) {//如果是正确答案
@@ -110,7 +110,7 @@ Page({
         }
       }
     }
-    
+
   },
   nextQuestion: function () {
     var that = this;
@@ -129,8 +129,8 @@ Page({
   //显示正确答案
   showRight: function () {
     var that = this;
-    if (that.data.item[0].indexOf('A')>=0){
-      this.setData({ bcA: that.data.bc_right,});
+    if (that.data.item[0].indexOf('A') >= 0) {
+      this.setData({ bcA: that.data.bc_right, });
     }
     if (that.data.item[0].indexOf('B') >= 0) {
       this.setData({ bcB: that.data.bc_right, });
@@ -156,10 +156,10 @@ Page({
     that.setQuestion();
   },
   //判断多选答案是否正确
-  isRight(daan,answer){
-    if(answer.length>=daan.length){
+  isRight(daan, answer) {
+    if (answer.length >= daan.length) {
       for (var i = 0; i < daan.length; i++) {
-        if (answer.indexOf(daan.charAt(i)) < 0){
+        if (answer.indexOf(daan.charAt(i)) < 0) {
           return false;
         }
       }

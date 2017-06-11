@@ -19,14 +19,14 @@ function saveData() {
 }
 
 //判断字符串是否为空或全为空格,返回
-function formName(str){
+function formName(str) {
   if (str == "") return -1;
   var regu = "^[ ]+$";
   var re = new RegExp(regu);
-  if(re.test(str)){
+  if (re.test(str)) {
     return -1;
   }
-  else{
+  else {
     return str.replace(/(^\s*)|(\s*$)/g, "");
   }
 }
@@ -61,14 +61,15 @@ function getSubsName() {
 function addLib(libName) {
   var libs = app.globalData.libs;
   var name_order = app.globalData.name_order;
+  if (name_order.length >= 100) return -1;//对科目数量做限制
   if (libs[libName] == null) {
     app.globalData.libs[libName] = {};
     name_order[name_order.length] = [libName];
     saveData();
-    return true
+    return 1
   }
   else {
-    return false
+    return 0
   }
 }
 
@@ -78,20 +79,21 @@ function addSub(subName) {
   var lib = app.globalData.libs[libName];
   var name_order = app.globalData.name_order;
   if (lib[subName] == null) {
-    lib[subName] = app.globalData.form;
     app.globalData.libs[app.globalData.selectLib] = lib;
     for (var i = 0; i < name_order.length; i++) {
-      if (name_order[i][0] == libName) {
+      if (name_order[i][0] == libName){
+        var libItem = name_order[i];
+        if (libItem.length > 100) return -1;//对题库数量做限制
         name_order[i].push(subName);
         break
       }
     }
-    app.globalData.name_order = name_order;
+    lib[subName] = app.globalData.form;
     saveData();
-    return true;
+    return 1;
   }
   else {
-    return false;
+    return 0;
   }
 }
 

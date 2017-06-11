@@ -5,7 +5,7 @@ Page({
   data: {
     items: [],
     answers: [],
-    show : [],
+    show: [],
     order: []
   },
   itemtap: function (e) {
@@ -18,14 +18,14 @@ Page({
         show: that.data.show
       })
     }
-    else if (that.data.answers[index] == '对'){
+    else if (that.data.answers[index] == '对') {
       that.data.answers[index] = '错';
       that.data.show[index] = '✘';
       this.setData({
         show: that.data.show
       })
     }
-    else{
+    else {
       that.data.answers[index] = '对';
       that.data.show[index] = '✔';
       this.setData({
@@ -33,7 +33,7 @@ Page({
       })
     }
   },
-  submit:function(){
+  submit: function () {
     var that = this;
     app.globalData.answers = that.data.answers;
     wx.redirectTo({
