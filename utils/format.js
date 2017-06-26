@@ -89,9 +89,9 @@ function getMultipleTitle(li) {
 function getASingle(s) {
   s = s + "\n";
   var ti = [];
-  var re = /(.*[（(][　 ]*[A-D][　 ]*[)）].*?)[　 \n;\t]+(A.*?)[　 \n;\t]+(B.*?)[　 \n;\t]+(C.*?)[　 \n;\t]+(D.*?)\n/g;
+  var re = /(.*[（(][　 ]*[A-D][　 ]*[)）].*?)[　 \n;\t]+(A.*?)[　 \n;\t]+(B.*?)[　 \n;\t]+(C.*?)[　 \n;\t]+(D.*?)[　 \n;\t]+(E.*?)\n/g;
   var arr = re.exec(s);
-  if (arr != null) {
+  if (arr != null) {//尝试匹配五个选项
     var title = getSingleTitle(arr[1]);
     ti.push(title[0]);
     ti.push(title[1]);
@@ -99,9 +99,10 @@ function getASingle(s) {
     ti.push(formatOption(arr[3]));
     ti.push(formatOption(arr[4]));
     ti.push(formatOption(arr[5]));
+    ti.push(formatOption(arr[6]));
   }
-  else {//尝试匹配三个选项
-    var re = /(.*[（(][　 ]*[A-C][　 ]*[)）].*?)[　 \n;\t]+(A.*?)[　 \n;\t]+(B.*?)[　 \n;\t]+(C.*?)\n/g;
+  else {
+    var re = /(.*[（(][　 ]*[A-D][　 ]*[)）].*?)[　 \n;\t]+(A.*?)[　 \n;\t]+(B.*?)[　 \n;\t]+(C.*?)[　 \n;\t]+(D.*?)\n/g;
     var arr = re.exec(s);
     if (arr != null) {
       var title = getSingleTitle(arr[1]);
@@ -110,8 +111,22 @@ function getASingle(s) {
       ti.push(formatOption(arr[2]));
       ti.push(formatOption(arr[3]));
       ti.push(formatOption(arr[4]));
+      ti.push(formatOption(arr[5]));
     }
-    else return null;
+    else {//尝试匹配三个选项
+      var re = /(.*[（(][　 ]*[A-C][　 ]*[)）].*?)[　 \n;\t]+(A.*?)[　 \n;\t]+(B.*?)[　 \n;\t]+(C.*?)\n/g;
+      var arr = re.exec(s);
+      if (arr != null) {
+        var title = getSingleTitle(arr[1]);
+        ti.push(title[0]);
+        ti.push(title[1]);
+        ti.push(formatOption(arr[2]));
+        ti.push(formatOption(arr[3]));
+        ti.push(formatOption(arr[4]));
+      }
+      else return null;
+    }
+    
   }
   return ti;
 }

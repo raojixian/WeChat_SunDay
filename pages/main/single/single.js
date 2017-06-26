@@ -14,6 +14,7 @@ Page({
     bcB: '',
     bcC: '',
     bcD: '',
+    bcE: '',
     array: [],
   },
   setQuestion: function () {
@@ -25,6 +26,7 @@ Page({
       bcB: that.data.bc_default,
       bcC: that.data.bc_default,
       bcD: that.data.bc_default,
+      bcE: that.data.bc_default,
     })
   },
   btnOpClick: function (e) {
@@ -44,6 +46,9 @@ Page({
         else if (select == 'D') {
           this.setData({ bcD: that.data.bc_right });
         }
+        else if (select == 'E') {
+          this.setData({ bcE: that.data.bc_right });
+        }
       }
       that.nextQuestion();
     }
@@ -59,6 +64,9 @@ Page({
       }
       else if (select == 'D') {
         this.setData({ bcD: that.data.bc_wrong });
+      }
+      else if (select == 'E') {
+        this.setData({ bcE: that.data.bc_wrong });
       }
     }
   },
@@ -89,6 +97,9 @@ Page({
     }
     else if (that.data.item[0] == 'D') {
       this.setData({ bcD: that.data.bc_right });
+    }
+    else if (that.data.item[0] == 'E') {
+      this.setData({ bcE: that.data.bc_right });
     }
   },
   bindPickerChange: function (e) {

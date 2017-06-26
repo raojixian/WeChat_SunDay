@@ -3,7 +3,7 @@
   <scroll-view scroll-y style="height: 320rpx;">
     <label class="page_title">{{item[1]}}</label>
   </scroll-view>
-  <scroll-view scroll-y style="height: 720rpx; margin-top: 20rpx;">
+  <scroll-view scroll-y style="height: 730rpx; margin-top: 20rpx;">
     <button id='A' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcA}};">{{item[2]}}</button>
     <button id='B' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcB}};" >{{item[3]}}</button>
     <button id='C' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcC}};" >{{item[4]}}</button>

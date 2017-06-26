@@ -9,6 +9,7 @@ App({
     form_len: 0,//格式化题目的个数
     items: [],//当前做的题
     answers: [],//用户的答案
+    time :0 //做题时间
   },
   onLaunch: function () {
     //调用API从本地缓存中获取数据

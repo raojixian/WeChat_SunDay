@@ -14,8 +14,10 @@ Page({
     bcB: '',
     bcC: '',
     bcD: '',
+    bcE: '',
     array: [],
-  },
+    beginTime :0
+    },
   setQuestion: function () {
     var that = this;
     var i = that.data.index;
@@ -29,6 +31,7 @@ Page({
         bcB: that.data.bc_default,
         bcC: that.data.bc_default,
         bcD: that.data.bc_default,
+        bcE: that.data.bc_default,
       });
     }
     else if (ans == 'A') {
@@ -37,6 +40,7 @@ Page({
         bcB: that.data.bc_default,
         bcC: that.data.bc_default,
         bcD: that.data.bc_default,
+        bcE: that.data.bc_default,
       });
     }
     else if (ans == 'B') {
@@ -45,6 +49,7 @@ Page({
         bcA: that.data.bc_default,
         bcC: that.data.bc_default,
         bcD: that.data.bc_default,
+        bcE: that.data.bc_default,
       });
     }
     else if (ans == 'C') {
@@ -53,6 +58,7 @@ Page({
         bcA: that.data.bc_default,
         bcB: that.data.bc_default,
         bcD: that.data.bc_default,
+        bcE: that.data.bc_default,
       });
     }
     else if (ans == 'D') {
@@ -61,6 +67,16 @@ Page({
         bcA: that.data.bc_default,
         bcB: that.data.bc_default,
         bcC: that.data.bc_default,
+        bcE: that.data.bc_default,
+      });
+    }
+    else if (ans == 'E') {
+      this.setData({
+        bcE: that.data.bc_select,
+        bcA: that.data.bc_default,
+        bcB: that.data.bc_default,
+        bcC: that.data.bc_default,
+        bcA: that.data.bc_default,
       });
     }
   },
@@ -74,6 +90,7 @@ Page({
         bcB: that.data.bc_default,
         bcC: that.data.bc_default,
         bcD: that.data.bc_default,
+        bcE: that.data.bc_default,
       });
     }
     else if (select == 'B') {
@@ -82,6 +99,7 @@ Page({
         bcA: that.data.bc_default,
         bcC: that.data.bc_default,
         bcD: that.data.bc_default,
+        bcE: that.data.bc_default,
       });
     }
     else if (select == 'C') {
@@ -90,6 +108,7 @@ Page({
         bcA: that.data.bc_default,
         bcB: that.data.bc_default,
         bcD: that.data.bc_default,
+        bcE: that.data.bc_default,
       });
     }
     else if (select == 'D') {
@@ -98,6 +117,16 @@ Page({
         bcA: that.data.bc_default,
         bcB: that.data.bc_default,
         bcC: that.data.bc_default,
+        bcE: that.data.bc_default,
+      });
+    }
+    else if (select == 'E') {
+      this.setData({
+        bcE: that.data.bc_select,
+        bcA: that.data.bc_default,
+        bcB: that.data.bc_default,
+        bcC: that.data.bc_default,
+        bcD: that.data.bc_default,
       });
     }
   },
@@ -118,6 +147,7 @@ Page({
   submit: function () {
     var that = this;
     app.globalData.answers = that.data.answers;
+    app.globalData.time = new Date().getTime() - that.data.beginTime;
     wx.redirectTo({ url: '../result/result' })
   },
   bindPickerChange: function (e) {
@@ -138,6 +168,7 @@ Page({
       tishu: len,
       answers: answers,
       array: arr,
+      beginTime: new Date().getTime()
     });
     var that = this;
     this.setQuestion();

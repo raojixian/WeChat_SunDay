@@ -6,7 +6,8 @@ Page({
     items: [],
     answers: [],
     show: [],
-    order: []
+    order: [],
+    beginTime:0
   },
   itemtap: function (e) {
     var that = this;
@@ -36,6 +37,7 @@ Page({
   submit: function () {
     var that = this;
     app.globalData.answers = that.data.answers;
+    app.globalData.time = new Date().getTime() - that.data.beginTime;
     wx.redirectTo({
       url: '../result/result'
     })
@@ -54,7 +56,8 @@ Page({
       items: app.globalData.items,
       answers: answers,
       show: show,
-      order: order
+      order: order,
+      beginTime: new Date().getTime()
     })
   }
 })

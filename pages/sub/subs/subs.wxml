@@ -1,6 +1,9 @@
 <!--pages/sub/subs/subs.wxml-->
 <view class="page">
-  <button bindtap="btnAddClick">添加题库</button>
+  <view class="top" style = "background-image:url('/image/title.png')">
+  <image src="/image/title.png" style="height:70rpx;width:750rpx"></image>
+  <label class="top_add" bindtap="btnAddClick">添加题库</label>
+  </view>
   <view class="page_hd">
     <radio-group class="radio_group" bindchange="radioChange">
       <radio value="a" checked="true" />
@@ -28,8 +31,8 @@
   </action-sheet>
   <view class="alter_name" wx:if="{{alterShow}}">
     <view class="input_name">
-      <button class="btn_name" plain="true">
-        <input style="margin-top:16rpx;" id="myInput" value="{{selectSub}}" maxlength="12" bindinput="getName" />
+      <button class="btn_name" style="border-color: #fbfbfb;" plain="true">
+        <input style="margin-top:16rpx;color:#fff" id="myInput" value="{{selectSub}}" maxlength="12" bindinput="getName" />
       </button>
     </view>
     <view class="alter_btn">

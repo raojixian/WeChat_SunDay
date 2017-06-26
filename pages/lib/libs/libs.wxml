@@ -1,6 +1,9 @@
 <!--pages/lib/libs/libs.wxml-->
 <view class="page">
-  <button bindtap="btnAddClick">添加科目</button>
+  <view class="top" style = "background-image:url('/image/title.png')">
+  <image src="/image/title.png" style="height:70rpx;width:750rpx"></image>
+  <label class="top_add" bindtap="btnAddClick">添加科目</label>
+  </view>
   <scroll-view scroll-y class="section">
     <view class="page_scroll_item" wx:for="{{items}}" wx:for-item="key" id="{{key}}">
       <view class="scroll_item_left" id="{{key}}" bindlongtap="longtap">{{key}}</view>
@@ -16,8 +19,8 @@
   </action-sheet>
   <view class="alter_name" wx:if="{{alterShow}}">
     <view class="input_name">
-      <button class="btn_name" plain="true">
-        <input style="margin-top:16rpx;" id="myInput" value="{{selectLib}}" maxlength="12" bindinput="getName" />
+      <button class="btn_name" style="border-color: #fbfbfb;" plain="true">
+        <input style="margin-top:16rpx;color:#fff" id="myInput" value="{{selectLib}}" maxlength="12" bindinput="getName" />
       </button>
     </view>
     <view class="alter_btn">

@@ -3,11 +3,12 @@
   <scroll-view scroll-y style="height: 320rpx;">
     <label class="page_title">{{item[1]}}</label>
   </scroll-view>
-    <scroll-view scroll-y style="height: 720rpx; margin-top: 20rpx;">
+    <scroll-view scroll-y style="height: 730rpx; margin-top: 20rpx;">
     <button id='A' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcA}};">{{item[2]}}</button>
     <button id='B' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcB}};" >{{item[3]}}</button>
     <button id='C' class="btn_op" bindtap="btnOpClick" style="background-color: {{bcC}};" >{{item[4]}}</button>
     <button id='D' class="btn_op" wx:if="{{item.length >= 6}}" bindtap="btnOpClick" style="background-color: {{bcD}};" >{{item[5]}}</button>
+    <button id='E' class="btn_op" wx:if="{{item.length >= 7}}" bindtap="btnOpClick" style="background-color: {{bcE}};" >{{item[6]}}</button>
   </scroll-view>
   <view class="page_bottom">
     <button class="page_bottom_left" bindtap="showRight"   plain="true">♫</button>

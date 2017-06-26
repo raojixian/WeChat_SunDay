@@ -17,6 +17,7 @@ Page({
     bcE: '',
     bcF: '',
     array: [],
+    beginTime:0
   },
 
   setQuestion: function () {
@@ -89,6 +90,7 @@ Page({
   submit: function () {
     var that = this;
     app.globalData.answers = that.data.answers;
+    app.globalData.time = new Date().getTime() - that.data.beginTime;
     wx.redirectTo({ url: '../result/result' });
   },
   bindPickerChange: function (e) {
@@ -109,6 +111,7 @@ Page({
       tishu: len,
       answers: answers,
       array: arr,
+      beginTime: new Date().getTime()
     });
     var that = this;
     this.setQuestion();

@@ -1,14 +1,29 @@
 /* pages/lib/libs/libs.wxss */
 
+.top{
+  height: 70rpx;
+  width: 750rpx;
+  text-align: right;
+}
+.top_add{
+  font-size: 38rpx;
+  color: #fff;
+  line-height: 38rpx;
+  height: 40rpx;
+  width: 200rpx;
+  position: absolute;
+  top:20rpx;
+  right:10rpx;
+}
+
 .section {
-  margin-top: 20rpx;
-  height: 1076rpx;
+  height: 1122rpx;
 }
 
 .alter_name {
   position: fixed;
   top: 490rpx;
-  background-color: #ddd;
+  background-color: #000;
   height: 200rpx;
   width: 510rpx;
   left: 120rpx;
@@ -31,8 +46,8 @@
 .flex-item {
   width: 150rpx;
   height: 80rpx;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   display: flex;
   justify-content: center;
   align-items: center;

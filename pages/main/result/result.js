@@ -9,6 +9,7 @@ Page({
     wrongNum: 0,
     wrongText: "",
     wrongItems: [],
+    time : '',
   },
   practice: function () {
     var that = this;
@@ -62,8 +63,8 @@ Page({
     });
   },
   //判断多选答案是否正确
-  isRight(daan, answer) {
-    if (answer.length >= daan.length) {
+  isRight(daan, answer){
+    if (answer.length == daan.length) {
       for (var i = 0; i < daan.length; i++) {
         if (answer.indexOf(daan.charAt(i)) < 0) {
           return false;
@@ -116,7 +117,7 @@ Page({
     for (var i = 0; i < items.length; i++) {
       if (answers[i] != '') {
         doneNum++;
-        if (answers[i] == items[i][0]) {
+        if (answers[i] != items[i][0]) {
           wrongNum++;
           wrongItems.push(items[i]);
           wrongText += items[i][0] + "\n" + items[i][1] + "\n\n";
@@ -131,12 +132,38 @@ Page({
       wrongItems: wrongItems
     });
   },
-  onLoad: function (options) {
+  formatTime :function (value) {
+    var theTime = parseInt(value);// 秒
+    var theTime1 = 0;// 分
+    var theTime2 = 0;// 小时
+    if(theTime > 60) {
+      theTime1 = parseInt(theTime / 60);
+      theTime = parseInt(theTime % 60);
+      if (theTime1 > 60) {
+        theTime2 = parseInt(theTime1 / 60);
+        theTime1 = parseInt(theTime1 % 60);
+      }
+    }
+    var result = "" + parseInt(theTime) + "秒";
+    if(theTime1 > 0) {
+      result = "" + parseInt(theTime1) + "分" + result;
+    }
+        if(theTime2 > 0) {
+      result = "" + parseInt(theTime2) + "小时" + result;
+    }
+    return result;
+  },
+  onLoad: function (options){
+
     var that = this;
     var tp = app.globalData.libs[app.globalData.selectLib][app.globalData.selectSub]['type'];
     this.setData({ tp: tp });
     if (tp == 0) that.checkSingle();
     else if (tp == 1) that.checkMultiple();
     else if (tp == 2) that.checkJudge();
+
+    this.setData({
+      time: that.formatTime(app.globalData.time / 1000)
+    });
   }
 })
